@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "reach:soulchest",
+    "reach:blemish_roots",
+    "reach:blemish_vines",
+    "reach:blemish_vines_plants",
+    "reach:rafflesia",
+    "reach:soulstone",
+    "reach:soulslate",
+    "reach:blemish_stone",
+    "reach:blemish_test",
+    "reach:soulgrass",
+    "reach:blemish",
+    "reach:blemish_block"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "type": "reach:reach_vegetation",
+  "config": {
+    "spread_height": 4,
+    "spread_width": 8,
+    "state_provider": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "reach:blemish_roots"
+          },
+          "weight": 87
+        }
+      ]
+    }
+  }
+}

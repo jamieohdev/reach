@@ -1,0 +1,12 @@
+{
+  "type": "reach:blemish_ruin",
+  "start_pool": "reach:blemish_ruin",
+  "size": 1,
+  "max_distance_from_center": 80,
+  "biomes": "#reach:has_structure/blemish_ruin",
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "start_height": {
+    "absolute": 60
+  }
+}

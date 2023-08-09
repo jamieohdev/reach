@@ -1,0 +1,37 @@
+modLoader="javafml" #mandatory
+loaderVersion="[41,)" 
+license = "LGPL-3.0"
+issueTrackerURL="https://gitlab.com/groups/lenadevs/-/issues"
+[[mods]] #mandatory
+modId="reach" #mandatoryhere or just hardcode it
+version="0.0.1a-1.19.3"
+displayName="The Reach"
+#displayURL="https://www.curseforge.com/minecraft/mc-mods/the-reach/"
+logoFile="logo.png" 
+credits="lenadevs"
+authors="lenadevs"
+description='''
+The Reach is a mod that adds a limbo-like dimension to Minecraft.
+
+
+'''
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.reach]] #optional
+    # the modid of the dependency
+    modId="forge" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
+    mandatory=true #mandatory
+    # The version range of the dependency
+    versionRange="[41,)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+    ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+    side="BOTH"
+# Here's another dependency
+[[dependencies.reach]]
+    modId="minecraft"
+    mandatory=true
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+    versionRange="[1.19,1.20)"
+    ordering="NONE"
+    side="BOTH"

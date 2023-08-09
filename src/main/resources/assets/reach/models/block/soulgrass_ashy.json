@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "minecraft:block/soul_soil",
+    "particle": "minecraft:block/soul_soil",
+    "side": "reach:block/soulgrass_ashy",
+    "top": "reach:block/soulgrass"
+  }
+}

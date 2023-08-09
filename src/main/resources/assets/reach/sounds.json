@@ -1,0 +1,155 @@
+{
+  "ambience.volcanic1": {
+    "category": "ambient",
+    "subtitle": "subtitles.ambient.reach",
+    "sounds":[
+      {
+        "name": "reach:ambience/volcanic1",
+        "stream": false
+      }
+    ]
+  },
+  "ambience.volcanic2": {
+    "category": "ambient",
+    "subtitle": "subtitles.ambient.reach",
+    "sounds":[
+      {
+        "name": "reach:ambience/volcanic2",
+        "stream": false
+      }
+    ]
+  },
+  "ambience.volcanic3": {
+    "category": "ambient",
+    "subtitle": "subtitles.ambient.reach",
+    "sounds":[
+      {
+        "name": "reach:ambience/volcanic3",
+        "stream": false
+      }
+    ]
+  },
+  "ambience.frozen1": {
+    "category": "ambient",
+    "subtitle": "subtitles.ambient.reach",
+    "sounds":[
+      {
+        "name": "reach:ambience/frozen1",
+        "stream": false
+      }
+    ]
+  },
+  "ambience.frozen2": {
+    "category": "ambient",
+    "subtitle": "subtitles.ambient.reach",
+    "sounds":[
+      {
+        "name": "reach:ambience/frozen2",
+        "stream": false
+      }
+    ]
+  },
+  "ambience.frozen3": {
+    "category": "ambient",
+    "subtitle": "subtitles.ambient.reach",
+    "sounds":[
+      {
+        "name": "reach:ambience/frozen3",
+        "stream": false
+      }
+    ]
+  },
+  "ambience.upsidedown1": {
+    "category": "ambient",
+    "subtitle": "subtitles.ambient.reach",
+    "sounds":[
+      {
+        "name": "reach:ambience/upsidedown1",
+        "stream": false
+      }
+    ]
+  },
+  "ambience.upsidedown2": {
+    "category": "ambient",
+    "subtitle": "subtitles.ambient.reach",
+    "sounds":[
+      {
+        "name": "reach:ambience/upsidedown2",
+        "stream": false
+      }
+    ]
+  },
+  "ambience.upsidedown3": {
+    "category": "ambient",
+    "subtitle": "subtitles.ambient.reach",
+    "sounds":[
+      {
+        "name": "reach:ambience/upsidedown3",
+        "stream": false
+      }
+    ]
+  },
+  "records.ease": {
+    "category": "record",
+    "sounds":[
+      {
+        "name": "reach:records/ease",
+        "stream": true
+      }
+    ]
+  },
+  "records.fox": {
+    "category": "record",
+    "sounds":[
+      {
+        "name": "reach:records/fox",
+        "stream": true
+      }
+    ]
+  },
+  "records.hullabaloo": {
+    "category": "record",
+    "sounds":[
+      {
+        "name": "reach:records/hullabaloo",
+        "stream": true
+      }
+    ]
+  },
+  "music.gelida": {
+    "category": "music",
+    "sounds":[
+      {
+        "name": "reach:music/gelida",
+        "stream": true
+      }
+    ]
+  },
+  "music.theashfalls": {
+    "category": "music",
+    "sounds":[
+      {
+        "name": "reach:music/theashfalls",
+        "stream": true
+      }
+    ]
+  },
+  "music.coda": {
+    "category": "music",
+    "sounds":[
+      {
+        "name": "reach:music/coda",
+        "stream": true
+      }
+    ]
+  },
+  "music.rodhim": {
+    "category": "music",
+    "sounds":[
+      {
+        "name": "reach:music/rodhim",
+        "stream": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "layers=1": {
+      "model": "reach:block/blemish_height2"
+    },
+    "layers=2": {
+      "model": "reach:block/blemish_height4"
+    },
+    "layers=3": {
+      "model": "reach:block/blemish_height6"
+    },
+    "layers=4": {
+      "model": "reach:block/blemish_height8"
+    },
+    "layers=5": {
+      "model": "reach:block/blemish_height10"
+    },
+    "layers=6": {
+      "model": "reach:block/blemish_height12"
+    },
+    "layers=7": {
+      "model": "reach:block/blemish_height14"
+    },
+    "layers=8": {
+      "model": "reach:block/blemish_block"
+    }
+  }
+}
