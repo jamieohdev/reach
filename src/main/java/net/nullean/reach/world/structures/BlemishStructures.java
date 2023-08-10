@@ -96,13 +96,6 @@ public class BlemishStructures extends Structure {
 
     @Override
     public @NotNull Optional<Structure.GenerationStub> findGenerationPoint(Structure.@NotNull GenerationContext context) {
-
-        // Check if the spot is valid for our structure. This is just as another method for cleanness.
-        // Returning an empty optional tells the game to skip this spot as it will not generate the structure.
-        if (!BlemishStructures.extraSpawningChecks(context)) {
-            return Optional.empty();
-        }
-
         // Set's our spawning blockpos's y offset to be 60 blocks up.
         // Since we are going to have heightmap/terrain height spawning set to true further down, this will make it so we spawn 60 blocks above terrain.
         // If we wanted to spawn on ocean floor, we would set heightmap/terrain height spawning to false and the grab the y value of the terrain with OCEAN_FLOOR_WG heightmap.
