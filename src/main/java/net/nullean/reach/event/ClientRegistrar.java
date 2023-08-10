@@ -49,8 +49,7 @@ public class ClientRegistrar
     public static class ClientForgeEvents {
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key event) {
-            if(KeyBinding.DRINKING_KEY.consumeClick()) {
-            }
+
         }
 
     }
@@ -59,7 +58,7 @@ public class ClientRegistrar
     public static class ClientModBusEvents {
         @SubscribeEvent
         public static void onKeyRegister(RegisterKeyMappingsEvent event) {
-            event.register(KeyBinding.DRINKING_KEY);
+
         }
 
         @SubscribeEvent

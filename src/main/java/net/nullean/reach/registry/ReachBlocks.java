@@ -80,17 +80,13 @@ public class ReachBlocks {
 
                             @Override
                             public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                                if (Minecraft.getInstance().getEntityRenderDispatcher() != null && myRenderer == null) {
+                                Minecraft.getInstance().getEntityRenderDispatcher();
+                                if (myRenderer == null) {
                                     myRenderer = new BlockEntityWithoutLevelRenderer(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels()) {
-                                        //private FrostChestBlockEntity blockEntity;
 
                                         @Override
                                         public void renderByItem(@Nonnull ItemStack stack, @Nonnull ItemTransforms.TransformType transformType, @Nonnull PoseStack matrix, @Nonnull MultiBufferSource buffer, int x, int y) {
-                                            //if (blockEntity == null) {
-                                                // blockEntity = new FrostChestBlockEntity(BlockPos.ZERO, FrostBlocks.FROSTROOT_CHEST.get().defaultBlockState());
-                                            //}
-                                            //Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(blockEntity, matrix, buffer, x, y);
-                                        }
+                                       }
                                     };
                                 }
 

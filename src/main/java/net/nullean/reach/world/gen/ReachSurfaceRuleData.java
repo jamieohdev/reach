@@ -24,10 +24,10 @@ public class ReachSurfaceRuleData {
     }
 
     public static SurfaceRules.RuleSource reachRealm() {
-        return frostrealmLike(true, true, true);
+        return reachLike(true, true, true);
     }
 
-    public static SurfaceRules.RuleSource frostrealmLike(boolean p_198381_, boolean p_198382_, boolean p_198383_) {
+    public static SurfaceRules.RuleSource reachLike(boolean p_198381_, boolean p_198382_, boolean p_198383_) {
         ImmutableList.Builder<SurfaceRules.RuleSource> builder = ImmutableList.builder();
 
             builder.add(SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.verticalGradient("bedrock_roof", VerticalAnchor.belowTop(5), VerticalAnchor.top())), BEDROCK));

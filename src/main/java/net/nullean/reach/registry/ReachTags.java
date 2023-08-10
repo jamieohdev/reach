@@ -28,7 +28,7 @@ public class ReachTags
 
     public static class Blocks
     {
-        public static final TagKey<Block> BASE_STONE_FROSTREALM = tag("base_stone_reach");
+        public static final TagKey<Block> BASE_STONE_REACH = tag("base_stone_reach");
         public static final TagKey<Block> TUNDRA_REPLACEABLE = tag("tundra_replaceable");
         public static final TagKey<Block> HOT_SOURCE = tag("hot_source");
         public static final TagKey<Block> WORLD_CARVER_REPLACEABLE = tag("world_replaceable");
