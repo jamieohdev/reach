@@ -1,7 +1,6 @@
 package net.nullean.reach;
 
 import com.mojang.logging.LogUtils;
-import com.telepathicgrunt.structuretutorial.STStructures;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.nullean.reach.registry.*;
@@ -60,8 +59,7 @@ public class Reach {
         modEventBus.addListener(this::addCreative);
 
         ReachStructures.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
-        ReachPieces.STRUCTURE_PIECE_TYPES.register(modEventBus);
-        STStructures.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
+        // ReachPieces.STRUCTURE_PIECE_TYPES.register(modEventBus);
     }
 
     public static ResourceLocation makeID(String path) {
@@ -69,9 +67,7 @@ public class Reach {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            ModMessages.register();
-        });
+        event.enqueueWork(ModMessages::register);
         ReachBiomes.addBiomeTypes();
     }
 
