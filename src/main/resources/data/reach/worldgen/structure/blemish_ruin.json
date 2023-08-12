@@ -7,6 +7,6 @@
   "spawn_overrides": {},
   "step": "surface_structures",
   "start_height": {
-    "absolute": 60
+    "absolute": 0
   }
 }

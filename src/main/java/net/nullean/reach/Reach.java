@@ -31,7 +31,7 @@ import java.util.Locale;
 @Mod(Reach.MOD_ID)
 public class Reach {
     public static final String MOD_ID = "reach";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public Reach() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
