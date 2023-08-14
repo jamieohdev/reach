@@ -22,9 +22,9 @@ public class BlemishVegetationFeature extends Feature<ReachVegetationConfig> {
         BlockState blockstate = worldgenlevel.getBlockState(blockpos.below());
         ReachVegetationConfig netherforestvegetationconfig = p_160068_.config();
         RandomSource randomsource = p_160068_.random();
-        if (!blockstate.is(ReachBlocks.BLEMISH_BLOCK.get()) || !blockstate.is(ReachBlocks.BLEMISH.get()) || !blockstate.is(ReachBlocks.BLEMISH_ROOTED_BLOCK.get()) ) {
-            return false;
-        } else {
+        //if (!blockstate.is(ReachBlocks.BLEMISH_BLOCK.get()) || !blockstate.is(ReachBlocks.BLEMISH.get()) || !blockstate.is(ReachBlocks.BLEMISH_ROOTED_BLOCK.get()) ) {
+        //    return false;
+        //} else {
             int i = blockpos.getY();
             if (i >= worldgenlevel.getMinBuildHeight() + 1 && i + 1 < worldgenlevel.getMaxBuildHeight()) {
                 int j = 0;
@@ -42,6 +42,6 @@ public class BlemishVegetationFeature extends Feature<ReachVegetationConfig> {
             } else {
                 return false;
             }
-        }
+        //}
     }
 }
