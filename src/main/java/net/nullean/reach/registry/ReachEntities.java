@@ -23,7 +23,7 @@ public class ReachEntities
     
     public static final RegistryObject<EntityType<MooBoo>> MOOBOO = ENTITIES.register("mooboo", () -> EntityType.Builder.of(MooBoo::new, MobCategory.CREATURE).sized(0.9F, 1.4F).clientTrackingRange(10).build(prefix("mooboo")));
     public static final RegistryObject<EntityType<Blemish>> BLEMISH = ENTITIES.register("blemish", () -> EntityType.Builder.of(Blemish::new, MobCategory.MONSTER).sized(0.9F, 1.4F).clientTrackingRange(10).build(prefix("blemish")));
-    public static final RegistryObject<EntityType<Spreader>> SPREADER = ENTITIES.register("spreader", () -> EntityType.Builder.of(Spreader::new, MobCategory.MONSTER).sized(4.9F, 4.9F).clientTrackingRange(10).build(prefix("spreader")));
+    public static final RegistryObject<EntityType<Spreader>> SPREADER = ENTITIES.register("spreader", () -> EntityType.Builder.of(Spreader::new, MobCategory.MONSTER).sized(1.0F, 1.0F).clientTrackingRange(10).build(prefix("spreader")));
     public static final RegistryObject<EntityType<SpreaderBlast>> SPREADER_BLAST = ENTITIES.register("spreader_blast", () -> EntityType.Builder.<SpreaderBlast>of(SpreaderBlast::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build(prefix("spreader_blast")));
 
 

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "reach:block/reach_brick_slab"
+    },
+    "type=double": {
+      "model": "reach:block/reach_bricks"
+    },
+    "type=top": {
+      "model": "reach:block/reach_brick_slab_top"
+    }
+  }
+}

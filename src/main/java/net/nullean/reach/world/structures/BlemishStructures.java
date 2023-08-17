@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 
 public class BlemishStructures extends Structure {
-
+    Blocks blocks;
     public static final Codec<BlemishStructures> CODEC = RecordCodecBuilder.<BlemishStructures>mapCodec(instance ->
             instance.group(BlemishStructures.settingsCodec(instance),
                     StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),

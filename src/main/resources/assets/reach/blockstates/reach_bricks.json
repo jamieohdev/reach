@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "reach:block/reach_bricks"
+      }
+    ]
+  }
+}

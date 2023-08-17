@@ -34,6 +34,6 @@ public class MooBoo extends Cow
     }
 
     public static boolean checkMooBooSpawnRules(EntityType<? extends Animal> p_27578_, LevelAccessor p_27579_, MobSpawnType p_27580_, BlockPos p_27581_, RandomSource p_27582_) {
-        return p_27579_.getBlockState(p_27581_.below()).is(ReachBlocks.SOUL_GRASS_BLOCK.get()) && p_27579_.getRawBrightness(p_27581_, 0) < 8 ;
+        return true;
     }
 }

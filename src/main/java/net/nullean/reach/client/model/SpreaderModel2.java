@@ -17,13 +17,13 @@ import net.nullean.reach.Reach;
 
 import java.util.Arrays;
 
-public class SpreaderModel<T extends Entity> extends HierarchicalModel<T> {
+public class SpreaderModel2<T extends Entity> extends HierarchicalModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Reach.MOD_ID, "shroom"), "main");
 	private final ModelPart bb_main, bb_tentacles;
 	//private ModelPart[] bb_tentacles = new ModelPart[4];
 
-	public SpreaderModel(ModelPart root) {
+	public SpreaderModel2(ModelPart root) {
 		this.bb_main = root;
 		this.bb_tentacles = root;
 		//Arrays.setAll(this.bb_tentacles, (p_170995_) -> {

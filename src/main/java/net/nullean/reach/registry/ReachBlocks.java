@@ -25,6 +25,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ReachBlocks {
+    Blocks block;
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, Reach.MOD_ID);
     // General Reach Blocks
@@ -48,7 +49,20 @@ public class ReachBlocks {
 
     public static final RegistryObject<Block> GOOP = register("goop", () -> new GoopBlock(BlockBehaviour.Properties.of(Material.MOSS).requiresCorrectToolForDrops().strength(0.2F).friction(0.8F).sound(SoundType.SLIME_BLOCK).noOcclusion().lightLevel((p_50884_) -> {
         return 9;
-    })));
+    })));// reach_brick reach:block/reach_bricks
+
+    public static final RegistryObject<Block>  REACH_POLISHED = register("reach_polished", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block>  REACH_BRICKS = register("reach_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block>  REACH_BRICK_STAIRS = register("reach_brick_stairs", () -> new StairBlock(REACH_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(REACH_BRICKS.get())));
+    public static final RegistryObject<Block>  REACH_BRICK_SLAB = register("reach_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(REACH_BRICKS.get())));
+    public static final RegistryObject<Block>  REACH_BRICK_WALL = register("reach_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(REACH_BRICKS.get())));
+    public static final RegistryObject<Block>  REACH_TILES = register("reach_tiles", () ->  new Block(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block>  REACH_TILE_STAIRS = register("reach_tile_stairs", () -> new StairBlock(REACH_TILES.get().defaultBlockState(), BlockBehaviour.Properties.copy(REACH_TILES.get())));
+    public static final RegistryObject<Block>  REACH_TILE_SLAB = register("reach_tile_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(REACH_TILES.get())));
+    public static final RegistryObject<Block>  REACH_TILE_WALL = register("reach_tile_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(REACH_TILES.get())));
+    public static final RegistryObject<Block>  CRACKED_REACH_BRICKS = register("reach_cracked_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block>  CHISELED_REACH_BRICKS = register("reach_chiseled_bricks", () ->  new Block(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+
 
     public static final RegistryObject<Block> SOULCHEST = register("soulchest", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 

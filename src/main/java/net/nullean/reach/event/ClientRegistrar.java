@@ -12,8 +12,8 @@ import net.nullean.reach.Reach;
 import net.nullean.reach.client.ReachModelLayers;
 import net.nullean.reach.client.ReachRenderInfo;
 import net.nullean.reach.client.model.BlemishModel;
+import net.nullean.reach.client.model.ModelSpreader;
 import net.nullean.reach.client.model.MooBooModel;
-import net.nullean.reach.client.model.SpreaderModel;
 import net.nullean.reach.client.renderer.BlemishRenderer;
 import net.nullean.reach.client.renderer.MooBooRenderer;
 import net.nullean.reach.client.renderer.SpreaderBlastRenderer;
@@ -43,7 +43,7 @@ public class ClientRegistrar
         LayerDefinition layerdefinition = LayerDefinition.create(HumanoidModel.createMesh(CubeDeformation.NONE, 0.0F), 64, 64);
         event.registerLayerDefinition(ReachModelLayers.MOOBOO, MooBooModel::createBodyLayer);
         event.registerLayerDefinition(ReachModelLayers.BLEMISH, BlemishModel::createBodyLayer);
-        event.registerLayerDefinition(ReachModelLayers.SPREADER, SpreaderModel::createBodyLayer);
+        event.registerLayerDefinition(ReachModelLayers.SPREADER, ModelSpreader::createBodyLayer);
     }
     @Mod.EventBusSubscriber(modid = Reach.MOD_ID, value = Dist.CLIENT)
     public static class ClientForgeEvents {

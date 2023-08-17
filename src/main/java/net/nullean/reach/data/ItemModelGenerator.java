@@ -37,6 +37,17 @@ public class ItemModelGenerator extends ItemModelProvider
         this.toBlock(ReachBlocks.BLEMISH_VINES);
         this.toBlock(ReachBlocks.BLEMISH_ROOTS);
         this.toBlock(ReachBlocks.GOOP);
+
+        this.toBlock(ReachBlocks.REACH_BRICKS);
+        this.toBlock(ReachBlocks.REACH_BRICK_STAIRS);
+        this.toBlock(ReachBlocks.REACH_BRICK_SLAB);
+        this.toBlock(ReachBlocks.REACH_BRICK_WALL);
+        this.toBlock(ReachBlocks.REACH_TILES);
+        this.toBlock(ReachBlocks.REACH_TILE_STAIRS);
+        this.toBlock(ReachBlocks.REACH_TILE_SLAB);
+        this.toBlock(ReachBlocks.REACH_TILE_WALL);
+        this.toBlock(ReachBlocks.CRACKED_REACH_BRICKS);
+        this.toBlock(ReachBlocks.CHISELED_REACH_BRICKS);
     }
 
     public ItemModelBuilder torchItem(Block item) {

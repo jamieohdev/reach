@@ -54,7 +54,16 @@ public class ReachItems {
                                             ReachBlocks.BLEMISH_VINES_PLANT,
                                             ReachBlocks.BLEMISH_VINES,
                                             ReachBlocks.BLEMISH_ROOTS,
-                                            ReachBlocks.GOOP)
+                                            ReachBlocks.REACH_BRICKS,
+                                            ReachBlocks.REACH_BRICK_STAIRS,
+                                            ReachBlocks.REACH_BRICK_SLAB,
+                                            ReachBlocks.REACH_BRICK_WALL,
+                                            ReachBlocks.REACH_TILES,
+                                            ReachBlocks.REACH_TILE_STAIRS,
+                                            ReachBlocks.REACH_TILE_SLAB,
+                                            ReachBlocks.REACH_TILE_WALL,
+                                            ReachBlocks.CRACKED_REACH_BRICKS ,
+                                            ReachBlocks.CHISELED_REACH_BRICKS)
                                     .map(block -> block.get().asItem().getDefaultInstance())
                                     .toList())).build();
                 });

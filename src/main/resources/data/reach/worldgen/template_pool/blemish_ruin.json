@@ -36,6 +36,33 @@
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "reach:ruin_blemish_1_nether",
+        "processors": "reach:randomize_nether",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "location": "reach:ruin_blemish_1_nether_small",
+        "processors": "reach:randomize_nether",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "location": "reach:ruin_blemish_1_end_small",
+        "processors": "reach:randomize_end",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
     }
   ]
 }
