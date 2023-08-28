@@ -1,19 +1,14 @@
 package net.nullean.reach.registry;
 
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.*;
-import net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.NetherForestVegetationConfig;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.nullean.reach.Reach;
-import net.nullean.reach.world.feature.BlemishVegetationFeature;
-import net.nullean.reach.world.feature.BlemishVinesFeature;
-import net.nullean.reach.world.feature.BlemishstoneClusterFeature;
-import net.nullean.reach.world.feature.GoopFeature;
-import net.nullean.reach.world.feature.configurations.BlemishstoneClusterConfiguration;
-import net.nullean.reach.world.feature.configurations.ReachVegetationConfig;
+import net.nullean.reach.world.feature.*;
+import net.nullean.reach.world.feature.configurations.*;
 
 public class ReachFeatures
 {
@@ -27,4 +22,11 @@ public class ReachFeatures
 
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> GOOP_FEATURE = FEATURES.register("goop", () -> new GoopFeature(NoneFeatureConfiguration.CODEC));
 
+    public static final RegistryObject<Feature<ShardConfiguration1>> SHARD_BLUE_LARGE = FEATURES.register("shard_large_blue", () -> new ShardLargeFeature1(ShardConfiguration1.CODEC, ReachBlocks.SHARD_BLUE.get()));
+    public static final RegistryObject<Feature<ShardConfiguration>> SHARD_GREEN_LARGE = FEATURES.register("shard_large_green", () -> new ShardLargeFeature(ShardConfiguration.CODEC, ReachBlocks.SHARD_GREEN.get()));
+    public static final RegistryObject<Feature<ShardConfiguration2>> SHARD_RED_LARGE = FEATURES.register("shard_large_red", () -> new ShardLargeFeature2(ShardConfiguration2.CODEC, ReachBlocks.SHARD_RED.get()));
+
+    public static final RegistryObject<Feature<ColumnFeatureConfiguration>> SHARD_BLUE_SMALL = FEATURES.register("shard_small_blue", () -> new ShardSmallFeature(ColumnFeatureConfiguration.CODEC, ReachBlocks.SHARD_BLUE.get()));
+    public static final RegistryObject<Feature<ColumnFeatureConfiguration>> SHARD_GREEN_SMALL = FEATURES.register("shard_small_green", () -> new ShardSmallFeature(ColumnFeatureConfiguration.CODEC, ReachBlocks.SHARD_GREEN.get()));
+    public static final RegistryObject<Feature<ColumnFeatureConfiguration>> SHARD_RED_SMALL = FEATURES.register("shard_small_red", () -> new ShardSmallFeature(ColumnFeatureConfiguration.CODEC, ReachBlocks.SHARD_RED.get()));
 }

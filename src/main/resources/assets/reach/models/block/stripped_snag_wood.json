@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "reach:block/stripped_snag_log",
+    "side": "reach:block/stripped_snag_log"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "reach:block/snag_planks",
+    "side": "reach:block/snag_planks",
+    "top": "reach:block/snag_planks"
+  }
+}

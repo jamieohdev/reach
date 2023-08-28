@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "reach:block/snag_slab"
+    },
+    "type=double": {
+      "model": "reach:block/snag_planks"
+    },
+    "type=top": {
+      "model": "reach:block/snag_slab_top"
+    }
+  }
+}

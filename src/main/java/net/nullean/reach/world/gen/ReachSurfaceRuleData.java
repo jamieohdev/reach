@@ -37,21 +37,11 @@ public class ReachSurfaceRuleData {
         SurfaceRules.ConditionSource surfacerules$conditionsource8 = SurfaceRules.waterBlockCheck(0, 0);
 
         SurfaceRules.RuleSource surfacerules$rulesource5 = SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.POWDER_SNOW, 0.35D, 0.6D), SurfaceRules.ifTrue(surfacerules$conditionsource8, POWDER_SNOW));
-        SurfaceRules.RuleSource powderSnow = SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), SurfaceRules.ifTrue(SurfaceRules.isBiome(ReachBiomes.GLACIERS), SurfaceRules.sequence(surfacerules$rulesource5, SurfaceRules.ifTrue(surfacerules$conditionsource8, SNOW_BLOCK))));
 
         SurfaceRules.RuleSource surface = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.waterBlockCheck(-1, 0), GRASS_BLOCK),
                 DIRT);
 
-        SurfaceRules.RuleSource overworldLike = SurfaceRules.ifTrue(SurfaceRules.isBiome(ReachBiomes.PLAINS,
-                ReachBiomes.FOREST), SurfaceRules.sequence(
-                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, surface),
-                SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, DIRT)
-        ));
 
-        SurfaceRules.RuleSource surfacerules$rulesource9 = SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), overworldLike);
-
-        builder.add(surfacerules$rulesource9);
-        builder.add(powderSnow);
 
         return SurfaceRules.sequence(builder.build().toArray(SurfaceRules.RuleSource[]::new));
 

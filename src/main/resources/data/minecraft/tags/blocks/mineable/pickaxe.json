@@ -4,6 +4,17 @@
     "reach:soulstone",
     "reach:soulslate",
     "reach:blemish_stone",
-    "reach:blemish_test"
+    "reach:blemish_test",
+    "reach:blemish_block",
+    "reach:reach_bricks",
+    "reach:reach_tiles",
+    "reach:reach_cracked_bricks",
+    "reach:reach_chiseled_bricks",
+    "reach:reach_brick_stairs",
+    "reach:reach_brick_slab",
+    "reach:reach_brick_wall",
+    "reach:reach_tile_stairs",
+    "reach:reach_tile_slab",
+    "reach:reach_tile_wall"
   ]
 }

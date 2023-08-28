@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right_open",
+  "textures": {
+    "bottom": "reach:block/snag_door_bottom",
+    "top": "reach:block/snag_door_top"
+  }
+}

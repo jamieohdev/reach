@@ -1,7 +1,7 @@
 {   "parent": "block/block",
     "textures": {
-        "particle": "block/blemish",
-        "bottom": "block/blemish",
+        "particle": "reach:block/blemish",
+        "bottom": "reach:block/blemish",
         "top": "reach:block/blemish_rooted_block",
         "side": "reach:block/blemish_rooted_block_side",
         "overlay": "reach:block/blemish_rooted_block_side"

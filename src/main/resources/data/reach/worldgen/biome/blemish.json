@@ -1,9 +1,8 @@
 {
   "carvers": {
     "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
+      "reach:reach_cave",
+      "minecraft:cave"
     ]
   },
   "creature_spawn_probability": 0.07,
@@ -61,7 +60,7 @@
       "reach:patch_rafflesia"
     ]
   ],
-  "precipitation": "snow",
+  "precipitation": "none",
   "spawn_costs": {},
   "spawners": {
     "ambient": [
@@ -74,18 +73,6 @@
     ],
     "axolotls": [],
     "creature": [
-      {
-        "type": "minecraft:rabbit",
-        "maxCount": 3,
-        "minCount": 2,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:polar_bear",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 1
-      }
     ],
     "misc": [],
     "monster": [
@@ -94,15 +81,15 @@
         "maxCount": 5,
         "minCount": 2,
         "weight": 100
+      },
+      {
+        "type": "reach:spreader",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 50
       }
     ],
     "underground_water_creature": [
-      {
-        "type": "minecraft:glow_squid",
-        "maxCount": 6,
-        "minCount": 4,
-        "weight": 10
-      }
     ],
     "water_ambient": [],
     "water_creature": []

@@ -25,6 +25,7 @@ public class ItemModelGenerator extends ItemModelProvider
     protected void registerModels() {
 
         this.toBlock(ReachBlocks.SOUL_GRASS_BLOCK);
+        this.toBlock(ReachBlocks.SOUL_PATH);
         this.toBlock(ReachBlocks.SOULSTONE);
         this.toBlock(ReachBlocks.SOULSLATE);
         this.toBlock(ReachBlocks.BLEMISH_BLOCK);
@@ -48,6 +49,23 @@ public class ItemModelGenerator extends ItemModelProvider
         this.toBlock(ReachBlocks.REACH_TILE_WALL);
         this.toBlock(ReachBlocks.CRACKED_REACH_BRICKS);
         this.toBlock(ReachBlocks.CHISELED_REACH_BRICKS);
+
+
+        this.toBlock(ReachBlocks.SNAG_BUTTON);
+        this.toBlock(ReachBlocks.SNAG_SLAB);
+        this.toBlock(ReachBlocks.SNAG_DOOR);
+        this.toBlock(ReachBlocks.SNAG_FENCE);
+        this.toBlock(ReachBlocks.SNAG_FENCE_GATE);
+        this.toBlock(ReachBlocks.SNAG_LEAVES);
+        this.toBlock(ReachBlocks.SNAG_LOG);
+        this.toBlock(ReachBlocks.SNAG_PLANKS);
+        this.toBlock(ReachBlocks.SNAG_PRESSURE_PLATE);
+        this.toBlock(ReachBlocks.SNAG_SAPLING);
+        this.toBlock(ReachBlocks.SNAG_STAIRS);
+        this.toBlock(ReachBlocks.SNAG_TRAPDOOR);
+        this.toBlock(ReachBlocks.SNAG_WOOD);
+        this.toBlock(ReachBlocks.STRIPPED_SNAG_LOG);
+        this.toBlock(ReachBlocks.STRIPPED_SNAG_WOOD);
     }
 
     public ItemModelBuilder torchItem(Block item) {

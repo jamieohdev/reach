@@ -54,8 +54,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.nullean.reach.registry.ReachBlocks;
 import net.nullean.reach.registry.ReachFeatures;
 import net.nullean.reach.registry.ReachTags;
-import net.nullean.reach.world.feature.configurations.BlemishstoneClusterConfiguration;
-import net.nullean.reach.world.feature.configurations.ReachVegetationConfig;
+import net.nullean.reach.world.feature.configurations.*;
 import net.nullean.reach.world.placements.ReachPlacements;
 
 import java.util.List;
@@ -68,6 +67,13 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLEMISH_VEGETATION = registerKey("reach_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>>  BLEMISH_VINES = registerKey("blemish_vines");
     public static final ResourceKey<ConfiguredFeature<?, ?>>  GOOP_FEATURE = registerKey("goop");
+
+    public static final ResourceKey<ConfiguredFeature<? , ?>> SHARD_BLUE_LARGE_FEATURE = registerKey("shard_large_blue");
+    public static final ResourceKey<ConfiguredFeature<? , ?>> SHARD_GREEN_LARGE_FEATURE = registerKey("shard_large_green");
+    public static final ResourceKey<ConfiguredFeature<? , ?>> SHARD_RED_LARGE_FEATURE = registerKey("shard_large_red");
+    public static final ResourceKey<ConfiguredFeature<? , ?>> SHARD_BLUE_SMALL_FEATURE = registerKey("shard_small_blue");
+    public static final ResourceKey<ConfiguredFeature<? , ?>> SHARD_GREEN_SMALL_FEATURE = registerKey("shard_small_green");
+    public static final ResourceKey<ConfiguredFeature<? , ?>> SHARD_RED_SMALL_FEATURE = registerKey("shard_small_red");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_BLEMISH_ROOTS = registerKey("patch_blemish_roots");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_RAFFLESIA = registerKey("patch_rafflesia");
@@ -112,6 +118,13 @@ public class ModConfiguredFeatures {
         FeatureUtils.register(context, BLEMISH_VINES, ReachFeatures.BLEMISH_VINES.get(), new NoneFeatureConfiguration());
         FeatureUtils.register(context, GOOP_FEATURE, ReachFeatures.GOOP_FEATURE.get(), new NoneFeatureConfiguration());
 
+        FeatureUtils.register(context, SHARD_BLUE_LARGE_FEATURE, ReachFeatures.SHARD_BLUE_LARGE.get(), new ShardConfiguration1(30, UniformInt.of(3, 19), UniformFloat.of(0.4F, 2.0F), 0.33F, UniformFloat.of(0.3F, 0.9F), UniformFloat.of(0.4F, 1.0F), UniformFloat.of(0.0F, 0.3F), 4, 0.6F));
+        FeatureUtils.register(context, SHARD_GREEN_LARGE_FEATURE, ReachFeatures.SHARD_GREEN_LARGE.get(), new ShardConfiguration(30, UniformInt.of(3, 19), UniformFloat.of(0.4F, 2.0F), 0.33F, UniformFloat.of(0.3F, 0.9F), UniformFloat.of(0.4F, 1.0F), UniformFloat.of(0.0F, 0.3F), 4, 0.6F));
+        FeatureUtils.register(context, SHARD_RED_LARGE_FEATURE, ReachFeatures.SHARD_RED_LARGE.get(), new ShardConfiguration2 (30, UniformInt.of(3, 19), UniformFloat.of(0.4F, 2.0F), 0.33F, UniformFloat.of(0.3F, 0.9F), UniformFloat.of(0.4F, 1.0F), UniformFloat.of(0.0F, 0.3F), 4, 0.6F));
+
+        FeatureUtils.register(context, SHARD_BLUE_SMALL_FEATURE, ReachFeatures.SHARD_BLUE_SMALL.get(), new ColumnFeatureConfiguration(UniformInt.of(2, 3), UniformInt.of(1, 5)));
+        FeatureUtils.register(context, SHARD_GREEN_SMALL_FEATURE, ReachFeatures.SHARD_GREEN_SMALL.get(), new ColumnFeatureConfiguration(ConstantInt.of(1), UniformInt.of(1, 4)));
+        FeatureUtils.register(context, SHARD_RED_SMALL_FEATURE, ReachFeatures.SHARD_RED_SMALL.get(), new ColumnFeatureConfiguration(UniformInt.of(1, 2), UniformInt.of(1, 5)));
 
         WeightedStateProvider weightedstateprovider = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(ReachBlocks.BLEMISH_ROOTS.get().defaultBlockState(), 87));
         FeatureUtils.register(context, BLEMISH_VEGETATION, ReachFeatures.BLEMISH_VEGETATION.get(), new ReachVegetationConfig(weightedstateprovider, 8, 4));

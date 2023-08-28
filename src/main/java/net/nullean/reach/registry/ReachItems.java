@@ -2,6 +2,8 @@ package net.nullean.reach.registry;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -12,6 +14,7 @@ import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.nullean.reach.item.entity.SnagSignItem;
 
 import java.util.stream.Stream;
 
@@ -20,10 +23,15 @@ public class ReachItems {
     public static CreativeModeTab REACHITEM;
     public static CreativeModeTab REACHBLOCK;
 
+    Items items;
+
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Reach.MOD_ID);
     public static final RegistryObject<Item> MOOBOO_SPAWNEGG = ITEMS.register("mooboo_spawn_egg", () -> new ForgeSpawnEggItem(ReachEntities.MOOBOO, 0xB18346, 0x9B6B2D, (new Item.Properties())));
 
+   // public static final RegistryObject<Item>  SNAG_BOAT = ITEMS.register("snag_boat", () -> new BoatItem(false, Boat.Type.SNAG, (new Item.Properties()).stacksTo(1)));
+   // public static final RegistryObject<Item>  SNAG_CHEST_BOAT = ITEMS.register("snag_chest_boat", () -> new BoatItem(true, Boat.Type.SNAG, (new Item.Properties()).stacksTo(1)));
+    public static final RegistryObject<Item>  SNAG_SIGN = ITEMS.register("snag_sign_item", () -> new SnagSignItem((new Item.Properties()).stacksTo(16), ReachBlocks.SNAG_SIGN.get(), ReachBlocks.SNAG_WALL_SIGN.get()));
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
@@ -34,7 +42,7 @@ public class ReachItems {
                 , (builder) -> {
                     REACHITEM = builder.icon(() -> new ItemStack(ReachItems.MOOBOO_SPAWNEGG.get())).title(Component.translatable("itemGroup." + Reach.MOD_ID + ".item" + ".main_tab")).displayItems((features, output, hasPermissions) ->
                             output.acceptAll(Stream.of(
-                                            MOOBOO_SPAWNEGG)
+                                            MOOBOO_SPAWNEGG, SNAG_SIGN)
                                     .map(item -> item.get().getDefaultInstance())
                                     .toList())).build();
                 });
@@ -62,8 +70,34 @@ public class ReachItems {
                                             ReachBlocks.REACH_TILE_STAIRS,
                                             ReachBlocks.REACH_TILE_SLAB,
                                             ReachBlocks.REACH_TILE_WALL,
-                                            ReachBlocks.CRACKED_REACH_BRICKS ,
-                                            ReachBlocks.CHISELED_REACH_BRICKS)
+                                            ReachBlocks.CRACKED_REACH_BRICKS,
+                                            ReachBlocks.CHISELED_REACH_BRICKS,
+                                            ReachBlocks.CRACKED_REACH_BRICKS,
+                                            ReachBlocks.SHARD_BLUE,
+                                            ReachBlocks.SHARD_RED,
+                                            ReachBlocks.SHARD_GREEN,
+                                            ReachBlocks.SHARD_CYAN,
+                                            ReachBlocks.SHARD_MAGENTA,
+                                            ReachBlocks.SHARD_WHITE,
+                                            ReachBlocks.SHARD_PLASMA,
+                                            ReachBlocks.SOUL_PATH,
+
+                                            ReachBlocks.SNAG_BUTTON,
+                                            ReachBlocks.SNAG_WALL_SIGN,
+                                            ReachBlocks.SNAG_DOOR,
+                                            ReachBlocks.SNAG_FENCE,
+                                            ReachBlocks.SNAG_FENCE_GATE,
+                                            ReachBlocks.SNAG_LEAVES,
+                                            ReachBlocks.SNAG_LOG,
+                                            ReachBlocks.SNAG_PLANKS,
+                                            ReachBlocks.SNAG_PRESSURE_PLATE,
+                                            ReachBlocks.SNAG_SAPLING,
+                                            ReachBlocks.SNAG_SLAB,
+                                            ReachBlocks.SNAG_STAIRS,
+                                            ReachBlocks.SNAG_TRAPDOOR,
+                                            ReachBlocks.SNAG_WOOD,
+                                            ReachBlocks.STRIPPED_SNAG_LOG,
+                                            ReachBlocks.STRIPPED_SNAG_WOOD)
                                     .map(block -> block.get().asItem().getDefaultInstance())
                                     .toList())).build();
                 });

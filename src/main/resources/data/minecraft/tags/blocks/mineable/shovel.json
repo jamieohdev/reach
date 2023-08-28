@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "reach:soulgrass",
-    "reach:blemish",
     "reach:blemish_block"
   ]
 }

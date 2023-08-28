@@ -1,8 +1,10 @@
 package net.nullean.reach;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.Sheets;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.RegisterCommandsEvent;
+import net.nullean.reach.block.ReachWoodTypes;
 import net.nullean.reach.registry.*;
 import net.nullean.reach.block.entity.ModBlockEntities;
 import net.nullean.reach.entity.ModEntityTypes;
@@ -50,6 +52,7 @@ public class Reach {
         ReachEntities.ENTITIES.register(modEventBus);
 
         ReachParticles.PARTICLES.register(modEventBus);
+        ReachTileEntities.TILE.register(modEventBus);
         ModLootModifiers.register(modEventBus);
 
         modEventBus.addListener(this::setup);
@@ -79,7 +82,18 @@ public class Reach {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            event.enqueueWork(
+                    ReachBlocks::setRenderTypes);
+            ReachTileEntityRenderers.init();
+            registerWoodTypes(event);
         }
+    }
+
+    private static void registerWoodTypes(FMLClientSetupEvent event) {
+        //Add each of your custom wood types here. This is for textures.
+        event.enqueueWork(() -> {
+            Sheets.addWoodType(ReachWoodTypes.SNAG);
+        });
     }
 
     public static ResourceLocation prefix(String name) {

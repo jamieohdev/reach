@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "reach:block/shard_plasma"
+      },
+      {
+        "model": "reach:block/shard_plasma_mirrored"
+      },
+      {
+        "model": "reach:block/shard_plasma",
+        "y": 180
+      },
+      {
+        "model": "reach:block/shard_plasma_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

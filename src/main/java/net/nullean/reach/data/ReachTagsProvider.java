@@ -29,13 +29,6 @@ public class ReachTagsProvider extends TagsProvider<Biome>
     protected void addTags(HolderLookup.Provider context) {
         Optional<HolderLookup.RegistryLookup<Biome>> holdergetter = context.lookup(Registries.BIOME);
         Optional<HolderLookup.RegistryLookup<StructureTemplatePool>> holdergetter1 = context.lookup(Registries.TEMPLATE_POOL);
-        this.tag(ReachTags.Biomes.IS_DEEP_OCEAN).add(ReachBiomes.CORAL_HAVEN).add(ReachBiomes.GLACIERS).add(ReachBiomes.KELP_FOREST).add(ReachBiomes.OCEAN);
-        this.tag(ReachTags.Biomes.IS_OCEAN).addTag(ReachTags.Biomes.IS_DEEP_OCEAN).add(ReachBiomes.OCEAN_BOILING).add(ReachBiomes.OCEAN_HOT).add(ReachBiomes.OCEAN).add(ReachBiomes.OCEAN_COLD).add(ReachBiomes.OCEAN_FROZEN);
-//        this.tag(ReachTags.Biomes.HAS_RUINED_PORTAL_OCEAN).addTag(ReachTags.Biomes.IS_OCEAN);
-        this.tag(ReachTags.Biomes.REQUIRED_OCEAN_MONUMENT_SURROUNDING).addTag(ReachTags.Biomes.IS_OCEAN);
-        this.tag(ReachTags.Biomes.HAS_OCEAN_RUIN_COLD).add(ReachBiomes.OCEAN).add(ReachBiomes.OCEAN_COLD).add(ReachBiomes.OCEAN_FROZEN);
-        this.tag(ReachTags.Biomes.HAS_OCEAN_RUIN_WARM).add(ReachBiomes.OCEAN_BOILING).add(ReachBiomes.OCEAN_HOT).add(ReachBiomes.OCEAN);
-        this.tag(ReachTags.Biomes.HAS_SHIPWRECK).addTag(ReachTags.Biomes.IS_OCEAN);
-        this.tag(ReachTags.Biomes.HAS_OCEAN_MONUMENT).addTag(ReachTags.Biomes.IS_DEEP_OCEAN);
+
     }
 }

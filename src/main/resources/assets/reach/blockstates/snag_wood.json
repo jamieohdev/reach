@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "reach:block/snag_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "reach:block/snag_wood"
+    },
+    "axis=z": {
+      "model": "reach:block/snag_wood",
+      "x": 90
+    }
+  }
+}

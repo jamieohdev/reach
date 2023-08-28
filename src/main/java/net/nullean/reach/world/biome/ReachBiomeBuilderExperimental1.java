@@ -41,8 +41,8 @@ public class ReachBiomeBuilderExperimental1
     // /execute in reach:reach run tp Dev ~ 312 ~
 
     private final ResourceKey<Biome>[][] OCEANS = new ResourceKey[][]{
-            {ReachBiomes.GLACIERS, ReachBiomes.GLACIERS, ReachBiomes.KELP_FOREST, ReachBiomes.KELP_FOREST, ReachBiomes.CORAL_HAVEN},
-            {ReachBiomes.OCEAN_FROZEN, ReachBiomes.OCEAN_COLD, ReachBiomes.OCEAN, ReachBiomes.OCEAN_HOT, ReachBiomes.OCEAN_BOILING}};
+            {Biomes.OCEAN},
+            {Biomes.OCEAN}};
     private final ResourceKey<Biome>[][] MIDDLE_BIOMES = new ResourceKey[][]{
             {Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, Biomes.SNOWY_TAIGA, Biomes.TAIGA},
             {Biomes.PLAINS, Biomes.PLAINS, Biomes.FOREST, Biomes.TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA},

@@ -21,6 +21,18 @@
           }
         },
         {
+          "biome": "reach:pillars",
+          "parameters": {
+            "temperature": 1.5,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
           "biome": "minecraft:soul_sand_valley",
           "parameters": {
             "temperature": 0,
