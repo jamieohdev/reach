@@ -9,5 +9,6 @@ public class ReachModelLayers
     public static final ModelLayerLocation MOOBOO = new ModelLayerLocation(new ResourceLocation(Reach.MOD_ID, "mooboo"), "mooboo");
     public static final ModelLayerLocation BLEMISH = new ModelLayerLocation(new ResourceLocation(Reach.MOD_ID, "blemish"), "blemish");
     public static final ModelLayerLocation SPREADER = new ModelLayerLocation(new ResourceLocation(Reach.MOD_ID, "spreader"), "spreader");
+    public static final ModelLayerLocation WISP = new ModelLayerLocation(new ResourceLocation(Reach.MOD_ID, "wisp"), "wisp");
 
 }

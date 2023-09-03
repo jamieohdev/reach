@@ -70,14 +70,14 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_tall_grass_2",
+      "reach:patch_tall_grass",
       "minecraft:trees_plains",
       "minecraft:flower_plains",
-      "minecraft:patch_grass_plain",
+      "reach:patch_grass",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
-      "minecraft:patch_pumpkin"
+      "reach:patch_pumpkin"
     ],
     [
       "minecraft:freeze_top_layer"

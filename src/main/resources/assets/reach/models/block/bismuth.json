@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "reach:block/bismuth_top",
+    "side": "reach:block/bismuth_side"
+  }
+}

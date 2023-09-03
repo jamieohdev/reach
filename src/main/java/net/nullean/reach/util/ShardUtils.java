@@ -122,7 +122,7 @@ public class ShardUtils
     {
         return p_159663_.is(ReachBlocks.SHARD_BLUE.get()) || p_159663_.is(ReachBlocks.SHARD_GREEN.get())
                 || p_159663_.is(ReachBlocks.SHARD_RED.get()) || p_159663_.is(ReachBlocks.SOULSTONE.get())
-                || p_159663_.is(Blocks.SOUL_SOIL.defaultBlockState().getBlock()) || p_159663_.is(ReachBlocks.SOULSLATE.get());
+                || p_159663_.is(ReachBlocks.SHARD_PLASMA.get()) || p_159663_.is(ReachBlocks.SOULSLATE.get());
     }
 
     public static boolean isEmptyOrWater(BlockState p_159665_)

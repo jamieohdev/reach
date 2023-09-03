@@ -32,6 +32,8 @@ public class ReachItems {
    // public static final RegistryObject<Item>  SNAG_BOAT = ITEMS.register("snag_boat", () -> new BoatItem(false, Boat.Type.SNAG, (new Item.Properties()).stacksTo(1)));
    // public static final RegistryObject<Item>  SNAG_CHEST_BOAT = ITEMS.register("snag_chest_boat", () -> new BoatItem(true, Boat.Type.SNAG, (new Item.Properties()).stacksTo(1)));
     public static final RegistryObject<Item>  SNAG_SIGN = ITEMS.register("snag_sign_item", () -> new SnagSignItem((new Item.Properties()).stacksTo(16), ReachBlocks.SNAG_SIGN.get(), ReachBlocks.SNAG_WALL_SIGN.get()));
+
+    public static final RegistryObject<Item> GHASTLY_PUMPKIN_SEEDS = ITEMS.register("ghastly_pumpkin_seeds", () -> new ItemNameBlockItem(ReachBlocks.GHASTLY_PUMPKIN_STEM.get(), new Item.Properties()));
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
@@ -42,7 +44,7 @@ public class ReachItems {
                 , (builder) -> {
                     REACHITEM = builder.icon(() -> new ItemStack(ReachItems.MOOBOO_SPAWNEGG.get())).title(Component.translatable("itemGroup." + Reach.MOD_ID + ".item" + ".main_tab")).displayItems((features, output, hasPermissions) ->
                             output.acceptAll(Stream.of(
-                                            MOOBOO_SPAWNEGG, SNAG_SIGN)
+                                            MOOBOO_SPAWNEGG, SNAG_SIGN, GHASTLY_PUMPKIN_SEEDS)
                                     .map(item -> item.get().getDefaultInstance())
                                     .toList())).build();
                 });
@@ -97,7 +99,16 @@ public class ReachItems {
                                             ReachBlocks.SNAG_TRAPDOOR,
                                             ReachBlocks.SNAG_WOOD,
                                             ReachBlocks.STRIPPED_SNAG_LOG,
-                                            ReachBlocks.STRIPPED_SNAG_WOOD)
+                                            ReachBlocks.STRIPPED_SNAG_WOOD,
+
+                                            ReachBlocks.SOUL_MOSS_CARPET,
+                                            ReachBlocks.SOUL_MOSS_BLOCK,
+                                            ReachBlocks.BISMUTH,
+                                            ReachBlocks.ANTIGRAVEL,
+                                            ReachBlocks.SOUL_GRASS_PLANT_SMALL,
+                                            ReachBlocks.SOUL_GRASS_PLANT,
+                                            ReachBlocks.GHASTLY_PUMPKIN,
+                                            ReachBlocks.JACK_O_LANTERN)
                                     .map(block -> block.get().asItem().getDefaultInstance())
                                     .toList())).build();
                 });

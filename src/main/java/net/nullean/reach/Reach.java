@@ -50,7 +50,9 @@ public class Reach {
 
         ModRecipes.register(modEventBus);
         ReachEntities.ENTITIES.register(modEventBus);
-
+        ReachFluidsReg.FLUID_REGISTER.register(modEventBus);
+        ReachFluidsReg.FORGE_FLUID_REGISTER.register(modEventBus);
+        ReachSounds.SOUND_EVENTS.register(modEventBus);
         ReachParticles.PARTICLES.register(modEventBus);
         ReachTileEntities.TILE.register(modEventBus);
         ModLootModifiers.register(modEventBus);
@@ -60,6 +62,9 @@ public class Reach {
         MinecraftForge.EVENT_BUS.register(this);
 
         modEventBus.addListener(this::addCreative);
+
+        ReachFluidsReg.setup();
+        ReachTags.setup();
 
         ReachStructures.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
         // ReachPieces.STRUCTURE_PIECE_TYPES.register(modEventBus);

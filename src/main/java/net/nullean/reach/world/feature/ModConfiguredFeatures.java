@@ -24,6 +24,7 @@ import net.minecraft.world.level.levelgen.feature.DripstoneClusterFeature;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight;
 import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
+import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureSpawnOverride;
@@ -74,6 +75,17 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<? , ?>> SHARD_BLUE_SMALL_FEATURE = registerKey("shard_small_blue");
     public static final ResourceKey<ConfiguredFeature<? , ?>> SHARD_GREEN_SMALL_FEATURE = registerKey("shard_small_green");
     public static final ResourceKey<ConfiguredFeature<? , ?>> SHARD_RED_SMALL_FEATURE = registerKey("shard_small_red");
+    public static final ResourceKey<ConfiguredFeature<? , ?>> SHARD_CYAN_SMALL_FEATURE = registerKey("shard_small_cyan");
+    public static final ResourceKey<ConfiguredFeature<? , ?>> SHARD_MAGENTA_SMALL_FEATURE = registerKey("shard_small_magenta");
+    public static final ResourceKey<ConfiguredFeature<? , ?>> SHARD_WHITE_SMALL_FEATURE = registerKey("shard_small_white");
+
+    public static final ResourceKey<ConfiguredFeature<? , ?>> XP_FLOOR = registerKey("xp_floor");
+    public static final ResourceKey<ConfiguredFeature<? , ?>> XP_CEILING = registerKey("xp_ceiling");
+
+
+    public static final ResourceKey<ConfiguredFeature<? , ?>> PATCH_GRASS = registerKey("patch_grass");
+    public static final ResourceKey<ConfiguredFeature<? , ?>> PATCH_TALL_GRASS = registerKey("patch_tall_grass");
+    public static final ResourceKey<ConfiguredFeature<? , ?>> PATCH_PUMPKIN = registerKey("patch_pumpkins");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_BLEMISH_ROOTS = registerKey("patch_blemish_roots");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_RAFFLESIA = registerKey("patch_rafflesia");
@@ -122,15 +134,26 @@ public class ModConfiguredFeatures {
         FeatureUtils.register(context, SHARD_GREEN_LARGE_FEATURE, ReachFeatures.SHARD_GREEN_LARGE.get(), new ShardConfiguration(30, UniformInt.of(3, 19), UniformFloat.of(0.4F, 2.0F), 0.33F, UniformFloat.of(0.3F, 0.9F), UniformFloat.of(0.4F, 1.0F), UniformFloat.of(0.0F, 0.3F), 4, 0.6F));
         FeatureUtils.register(context, SHARD_RED_LARGE_FEATURE, ReachFeatures.SHARD_RED_LARGE.get(), new ShardConfiguration2 (30, UniformInt.of(3, 19), UniformFloat.of(0.4F, 2.0F), 0.33F, UniformFloat.of(0.3F, 0.9F), UniformFloat.of(0.4F, 1.0F), UniformFloat.of(0.0F, 0.3F), 4, 0.6F));
 
-        FeatureUtils.register(context, SHARD_BLUE_SMALL_FEATURE, ReachFeatures.SHARD_BLUE_SMALL.get(), new ColumnFeatureConfiguration(UniformInt.of(2, 3), UniformInt.of(1, 5)));
+        FeatureUtils.register(context, SHARD_BLUE_SMALL_FEATURE, ReachFeatures.SHARD_BLUE_SMALL.get(), new ColumnFeatureConfiguration(UniformInt.of(1, 2), UniformInt.of(1, 5)));
         FeatureUtils.register(context, SHARD_GREEN_SMALL_FEATURE, ReachFeatures.SHARD_GREEN_SMALL.get(), new ColumnFeatureConfiguration(ConstantInt.of(1), UniformInt.of(1, 4)));
-        FeatureUtils.register(context, SHARD_RED_SMALL_FEATURE, ReachFeatures.SHARD_RED_SMALL.get(), new ColumnFeatureConfiguration(UniformInt.of(1, 2), UniformInt.of(1, 5)));
+        FeatureUtils.register(context, SHARD_RED_SMALL_FEATURE, ReachFeatures.SHARD_RED_SMALL.get(), new ColumnFeatureConfiguration(UniformInt.of(1, 1), UniformInt.of(1, 5)));
+
+        FeatureUtils.register(context, SHARD_CYAN_SMALL_FEATURE, ReachFeatures.SHARD_CYAN_SMALL.get(), new ColumnFeatureConfiguration(UniformInt.of(1, 2), UniformInt.of(1, 3)));
+        FeatureUtils.register(context, SHARD_MAGENTA_SMALL_FEATURE, ReachFeatures.SHARD_MAGENTA_SMALL.get(), new ColumnFeatureConfiguration(UniformInt.of(1, 2), UniformInt.of(1, 3)));
+        FeatureUtils.register(context, SHARD_WHITE_SMALL_FEATURE, ReachFeatures.SHARD_WHITE_SMALL.get(), new ColumnFeatureConfiguration(UniformInt.of(1, 2), UniformInt.of(1, 3)));
 
         WeightedStateProvider weightedstateprovider = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(ReachBlocks.BLEMISH_ROOTS.get().defaultBlockState(), 87));
         FeatureUtils.register(context, BLEMISH_VEGETATION, ReachFeatures.BLEMISH_VEGETATION.get(), new ReachVegetationConfig(weightedstateprovider, 8, 4));
 
         FeatureUtils.register(context, PATCH_BLEMISH_ROOTS, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(ReachBlocks.BLEMISH_ROOTS.get()), 64));
         FeatureUtils.register(context, PATCH_RAFFLESIA, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(ReachBlocks.RAFFLESIA.get()), 32));
+
+        FeatureUtils.register(context, XP_FLOOR, ReachFeatures.XP_FLOOR.get(), new ExperimentConfig(Blocks.DIRT.defaultBlockState(), Blocks.GLOWSTONE.defaultBlockState(), Blocks.DIRT.defaultBlockState(), UniformInt.of(4, 7), CaveSurface.FLOOR, 0.25F));
+        FeatureUtils.register(context, XP_CEILING, ReachFeatures.XP_CEILING.get(), new ExperimentConfig(Blocks.STONE.defaultBlockState(), Blocks.GLOWSTONE.defaultBlockState(), Blocks.OCHRE_FROGLIGHT.defaultBlockState(), UniformInt.of(4, 7), CaveSurface.CEILING, 0.25F));
+
+        FeatureUtils.register(context, PATCH_TALL_GRASS, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ReachBlocks.SOUL_GRASS_PLANT.get()))));
+        FeatureUtils.register(context, PATCH_GRASS, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(ReachBlocks.SOUL_GRASS_PLANT_SMALL.get()), 32));
+        FeatureUtils.register(context, PATCH_PUMPKIN, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ReachBlocks.GHASTLY_PUMPKIN.get())), List.of(ReachBlocks.SOUL_GRASS_BLOCK.get())));
 
     }
 

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "reach:block/jack_o_lantern",
+    "side": "reach:block/ghastly_pumpkin_side",
+    "top": "reach:block/ghastly_pumpkin_top"
+  }
+}

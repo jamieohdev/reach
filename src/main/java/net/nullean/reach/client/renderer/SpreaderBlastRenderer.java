@@ -10,8 +10,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.projectile.DragonFireball;
-import net.nullean.reach.entity.proejctile.SpreaderBlast;
+import net.nullean.reach.entity.projectile.SpreaderBlast;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 

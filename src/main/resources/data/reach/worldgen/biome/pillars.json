@@ -44,6 +44,8 @@
       "minecraft:ore_quartz_nether",
       "minecraft:ore_ancient_debris_large",
       "minecraft:ore_debris_small",
+      "reach:xp_floor",
+      "reach:xp_ceiling",
       "reach:shard_small_blue",
       "reach:shard_small_green",
       "reach:shard_small_red"

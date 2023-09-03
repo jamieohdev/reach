@@ -63,13 +63,13 @@ public class ReachBiomes {
     public static void bootstrap(BootstapContext<Biome> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         HolderGetter<ConfiguredWorldCarver<?>> vanillaConfiguredCarvers = context.lookup(Registries.CONFIGURED_CARVER);
-// TODO: USE <EXAMPLE>BIOME(PAR1, PAR2) INSTEAD OF PLAINSBIOME
-        context.register(BLEMISH, ReachBiomeBuilders.frozenBiome(placedFeatures, vanillaConfiguredCarvers));
-        context.register(SOUL_PLAINS, ReachBiomeBuilders.frozenBiome(placedFeatures, vanillaConfiguredCarvers));
-        context.register(BARRENS, ReachBiomeBuilders.frozenBiome(placedFeatures, vanillaConfiguredCarvers));
-        context.register(PILLARS, ReachBiomeBuilders.frozenBiome(placedFeatures, vanillaConfiguredCarvers));
-        context.register(UPSIDEDOWN, ReachBiomeBuilders.frozenBiome(placedFeatures, vanillaConfiguredCarvers));
-        context.register(CALM, ReachBiomeBuilders.frozenBiome(placedFeatures, vanillaConfiguredCarvers));
+
+        context.register(BLEMISH, ReachBiomeBuilders.blemishBiome(placedFeatures, vanillaConfiguredCarvers));
+        context.register(SOUL_PLAINS, ReachBiomeBuilders.plainsBiome(placedFeatures, vanillaConfiguredCarvers));
+        context.register(BARRENS, ReachBiomeBuilders.barrensBiome(placedFeatures, vanillaConfiguredCarvers));
+        context.register(PILLARS, ReachBiomeBuilders.pillarsBiome(placedFeatures, vanillaConfiguredCarvers));
+        context.register(UPSIDEDOWN, ReachBiomeBuilders.upsidedownBiome(placedFeatures, vanillaConfiguredCarvers));
+        context.register(CALM, ReachBiomeBuilders.calmBiome(placedFeatures, vanillaConfiguredCarvers));
     }
 
     private static ResourceKey<Biome> register(String p_48229_) {

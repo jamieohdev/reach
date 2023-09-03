@@ -3,10 +3,12 @@ package net.nullean.reach.registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 import net.nullean.reach.Reach;
 
 public class ReachTags
@@ -45,5 +47,17 @@ public class ReachTags
         private static TagKey<EntityType<?>> tag(String p_203849_) {
             return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(Reach.MOD_ID, p_203849_));
         }
+    }
+
+    public static void setup()
+    {
+        Fluids.setup();
+    }
+
+    public static class Fluids
+    {
+        private static void setup() {}
+
+        public static final TagKey<Fluid> BLOOD = FluidTags.create(new ResourceLocation(Reach.MOD_ID, "soul_lava"));
     }
 }

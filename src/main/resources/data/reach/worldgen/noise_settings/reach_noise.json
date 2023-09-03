@@ -1326,6 +1326,7 @@
                   "reach:pillars"
                 ]
               },
+
               "then_run": {
                 "type": "minecraft:sequence",
                 "sequence": [
@@ -1336,6 +1337,8 @@
                       "add_surface_depth": false,
                       "offset": 0,
                       "secondary_depth_range": 0,
+                      "max_threshold": 1.7976931348623157E308,
+                      "min_threshold": 0.21212121212121213,
                       "surface_type": "ceiling"
                     },
                     "then_run": {
@@ -1346,9 +1349,24 @@
                     }
                   },
                   {
-                    "type": "minecraft:block",
-                    "result_state": {
-                      "Name": "reach:soulpath"
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:stone_depth",
+                      "add_surface_depth": false,
+                      "offset": 0,
+                      "secondary_depth_range": 0,
+                      "max_threshold": 1.7976931348623157E308,
+                      "min_threshold": -0.11515151515151514,
+                      "surface_type": "ceiling"
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:podzol",
+                        "Properties": {
+                          "snowy": "false"
+                        }
+                      }
                     }
                   }
                 ]
@@ -1391,20 +1409,121 @@
           ]
         },
         "then_run": {
-          "type": "minecraft:condition",
-          "if_true": {
-            "type": "minecraft:stone_depth",
-            "add_surface_depth": true,
-            "offset": 0,
-            "secondary_depth_range": 30,
-            "surface_type": "floor"
-          },
-          "then_run": {
-            "type": "minecraft:block",
-            "result_state": {
-              "Name": "minecraft:soul_soil"
+          "type": "minecraft:sequence",
+          "sequence": [
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:stone_depth",
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "ceiling"
+              },
+              "then_run": {
+                "type": "minecraft:sequence",
+                "sequence": [
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "max_threshold": 1.7976931348623157E308,
+                      "min_threshold": 0.0,
+                      "noise": "minecraft:nether_state_selector"
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:soul_soil"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:block",
+                    "result_state": {
+                      "Name": "reach:soulstone"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:stone_depth",
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor"
+              },
+              "then_run": {
+                "type": "minecraft:sequence",
+                "sequence": [
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "max_threshold": 1.7976931348623157E308,
+                      "min_threshold": -0.012,
+                      "noise": "minecraft:patch"
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:y_above",
+                        "add_stone_depth": true,
+                        "anchor": {
+                          "absolute": 30
+                        },
+                        "surface_depth_multiplier": 0
+                      },
+                      "then_run": {
+                        "type": "minecraft:condition",
+                        "if_true": {
+                          "type": "minecraft:not",
+                          "invert": {
+                            "type": "minecraft:y_above",
+                            "add_stone_depth": true,
+                            "anchor": {
+                              "absolute": 35
+                            },
+                            "surface_depth_multiplier": 0
+                          }
+                        },
+                        "then_run": {
+                          "type": "minecraft:block",
+                          "result_state": {
+                            "Name": "minecraft:gravel"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "max_threshold": 1.7976931348623157E308,
+                      "min_threshold": 0.0,
+                      "noise": "minecraft:nether_state_selector"
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "reach:shard_plasma"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:block",
+                    "result_state": {
+                      "Name": "minecraft:soul_soil"
+                    }
+                  }
+                ]
+              }
             }
-          }
+          ]
         }
       },
       {

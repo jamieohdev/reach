@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
 
 public class Blemish extends Monster
 {
+    ZombifiedPiglin ref;
     protected int timeInOverworld;
 
     public Blemish(EntityType<? extends Monster> p_33002_, Level p_33003_) {
@@ -119,9 +120,7 @@ public class Blemish extends Monster
     }
 
     public static boolean checkBlemishSpawnRules(EntityType<? extends Monster> p_27578_, LevelAccessor p_27579_, MobSpawnType p_27580_, BlockPos p_27581_, RandomSource p_27582_) {
-        return true;/**p_27579_.getBlockState(p_27581_.below()).is(ReachBlocks.BLEMISH_BLOCK.get()) ||
-                p_27579_.getBlockState(p_27581_.below()).is(ReachBlocks.BLEMISH.get())
-                        && p_27579_.getRawBrightness(p_27581_, 0) < 8;**/
+        return true;
     }
 
     static class BlemishAttackGoal extends MeleeAttackGoal {

@@ -1,0 +1,27 @@
+package net.nullean.reach.world.feature.configurations;
+
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.placement.CaveSurface;
+
+public record ExperimentConfig(BlockState crystal_state, BlockState cluster_state, BlockState glinted_cluster, IntProvider xzRadius, CaveSurface crystal_direction, float glinted_cluster_chance) implements FeatureConfiguration {
+    public static final Codec<ExperimentConfig> CODEC = RecordCodecBuilder.create(codec -> {
+        return codec.group(BlockState.CODEC.fieldOf("crystal_state").forGetter(config -> {
+            return config.crystal_state;
+        }), BlockState.CODEC.fieldOf("cluster_state").forGetter(config -> {
+            return config.cluster_state;
+        }), BlockState.CODEC.fieldOf("glinted_cluster").forGetter(config -> {
+            return config.glinted_cluster;
+        }), IntProvider.CODEC.fieldOf("xz_radius").forGetter(config -> {
+            return config.xzRadius;
+        }), CaveSurface.CODEC.fieldOf("crystal_direction").forGetter(config -> {
+            return config.crystal_direction;
+        }), Codec.floatRange(0.0f, 1.0f).fieldOf("glinted_cluster_chance").forGetter(config -> {
+            return config.glinted_cluster_chance;
+        })).apply(codec, ExperimentConfig::new);
+    });
+
+}

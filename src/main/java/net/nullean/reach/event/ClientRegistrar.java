@@ -4,6 +4,7 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
+import net.minecraft.client.renderer.entity.FallingBlockRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.*;
@@ -14,10 +15,8 @@ import net.nullean.reach.client.ReachRenderInfo;
 import net.nullean.reach.client.model.BlemishModel;
 import net.nullean.reach.client.model.ModelSpreader;
 import net.nullean.reach.client.model.MooBooModel;
-import net.nullean.reach.client.renderer.BlemishRenderer;
-import net.nullean.reach.client.renderer.MooBooRenderer;
-import net.nullean.reach.client.renderer.SpreaderBlastRenderer;
-import net.nullean.reach.client.renderer.SpreaderRenderer;
+import net.nullean.reach.client.model.WispModel;
+import net.nullean.reach.client.renderer.*;
 import net.nullean.reach.registry.ReachEntities;
 import net.nullean.reach.util.KeyBinding;
 import net.minecraftforge.api.distmarker.Dist;
@@ -30,12 +29,15 @@ import java.util.function.Supplier;
 @Mod.EventBusSubscriber(modid = Reach.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientRegistrar
 {
+
     @SubscribeEvent
     public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ReachEntities.MOOBOO.get(), MooBooRenderer::new);
         event.registerEntityRenderer(ReachEntities.BLEMISH.get(), BlemishRenderer::new);
         event.registerEntityRenderer(ReachEntities.SPREADER.get(), SpreaderRenderer::new);
         event.registerEntityRenderer(ReachEntities.SPREADER_BLAST.get(), SpreaderBlastRenderer::new);
+        event.registerEntityRenderer(ReachEntities.WISP.get(), WispRenderer::new);
+        event.registerEntityRenderer(ReachEntities.RISING_BLOCK.get(), FallingBlockRenderer::new);
     }
 
     @SubscribeEvent
@@ -44,6 +46,7 @@ public class ClientRegistrar
         event.registerLayerDefinition(ReachModelLayers.MOOBOO, MooBooModel::createBodyLayer);
         event.registerLayerDefinition(ReachModelLayers.BLEMISH, BlemishModel::createBodyLayer);
         event.registerLayerDefinition(ReachModelLayers.SPREADER, ModelSpreader::createBodyLayer);
+        event.registerLayerDefinition(ReachModelLayers.WISP, WispModel::createBodyLayer);
     }
     @Mod.EventBusSubscriber(modid = Reach.MOD_ID, value = Dist.CLIENT)
     public static class ClientForgeEvents {

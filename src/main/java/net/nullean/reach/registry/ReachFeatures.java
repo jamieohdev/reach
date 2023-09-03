@@ -1,8 +1,11 @@
 package net.nullean.reach.registry;
 
+import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.*;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -26,7 +29,19 @@ public class ReachFeatures
     public static final RegistryObject<Feature<ShardConfiguration>> SHARD_GREEN_LARGE = FEATURES.register("shard_large_green", () -> new ShardLargeFeature(ShardConfiguration.CODEC, ReachBlocks.SHARD_GREEN.get()));
     public static final RegistryObject<Feature<ShardConfiguration2>> SHARD_RED_LARGE = FEATURES.register("shard_large_red", () -> new ShardLargeFeature2(ShardConfiguration2.CODEC, ReachBlocks.SHARD_RED.get()));
 
+    public static final RegistryObject<Feature<ExperimentConfig>> XP_FLOOR = FEATURES.register("xp_floor", () -> new ExperimentFeature(ExperimentConfig.CODEC));
+    public static final RegistryObject<Feature<ExperimentConfig>> XP_CEILING = FEATURES.register("xp_ceiling", () -> new ExperimentFeature(ExperimentConfig.CODEC));
+
     public static final RegistryObject<Feature<ColumnFeatureConfiguration>> SHARD_BLUE_SMALL = FEATURES.register("shard_small_blue", () -> new ShardSmallFeature(ColumnFeatureConfiguration.CODEC, ReachBlocks.SHARD_BLUE.get()));
     public static final RegistryObject<Feature<ColumnFeatureConfiguration>> SHARD_GREEN_SMALL = FEATURES.register("shard_small_green", () -> new ShardSmallFeature(ColumnFeatureConfiguration.CODEC, ReachBlocks.SHARD_GREEN.get()));
     public static final RegistryObject<Feature<ColumnFeatureConfiguration>> SHARD_RED_SMALL = FEATURES.register("shard_small_red", () -> new ShardSmallFeature(ColumnFeatureConfiguration.CODEC, ReachBlocks.SHARD_RED.get()));
+    public static final RegistryObject<Feature<ColumnFeatureConfiguration>> SHARD_CYAN_SMALL = FEATURES.register("shard_small_cyan", () -> new ShardSmallFeature(ColumnFeatureConfiguration.CODEC, ReachBlocks.SHARD_CYAN.get()));
+    public static final RegistryObject<Feature<ColumnFeatureConfiguration>> SHARD_MAGENTA_SMALL = FEATURES.register("shard_small_magenta", () -> new ShardSmallFeature(ColumnFeatureConfiguration.CODEC, ReachBlocks.SHARD_MAGENTA.get()));
+    public static final RegistryObject<Feature<ColumnFeatureConfiguration>> SHARD_WHITE_SMALL = FEATURES.register("shard_small_white", () -> new ShardSmallFeature(ColumnFeatureConfiguration.CODEC, ReachBlocks.SHARD_WHITE.get()));
+
+
+
+    private static RandomPatchConfiguration grassPatch(BlockStateProvider p_195203_, int p_195204_) {
+        return FeatureUtils.simpleRandomPatchConfiguration(p_195204_, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(p_195203_)));
+    }
 }

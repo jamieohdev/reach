@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "reach:block/bismuth_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "reach:block/bismuth"
+    },
+    "axis=z": {
+      "model": "reach:block/bismuth_horizontal",
+      "x": 90
+    }
+  }
+}

@@ -1,5 +1,6 @@
 package net.nullean.reach.registry;
 
+import com.google.common.base.Suppliers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
@@ -18,9 +19,10 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.grower.SpruceTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
@@ -30,6 +32,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.nullean.reach.block.*;
+import net.nullean.reach.world.material.fluids.ReachFluids;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;
@@ -52,6 +55,7 @@ public class ReachBlocks {
     })));
 
     public static final RegistryObject<Block> SHARD_PLASMA = register("shard_plasma", () -> new SculkBlock(BlockBehaviour.Properties.of(Material.SPONGE).strength(0.1F).requiresCorrectToolForDrops().sound(SoundType.SCULK)));
+    public static final RegistryObject<Block> SHARD_STONE = register("shard_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0F).sound(SoundType.STONE)));
     public static final RegistryObject<Block> SHARD_RED = register("shard_red", () ->  new GlassBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS).noOcclusion().isValidSpawn(ReachBlocks::never).isRedstoneConductor(ReachBlocks::never).isSuffocating(ReachBlocks::never).isViewBlocking(ReachBlocks::never)));
     public static final RegistryObject<Block> SHARD_BLUE = register("shard_blue", () ->  new GlassBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS).noOcclusion().isValidSpawn(ReachBlocks::never).isRedstoneConductor(ReachBlocks::never).isSuffocating(ReachBlocks::never).isViewBlocking(ReachBlocks::never)));
     public static final RegistryObject<Block> SHARD_GREEN = register("shard_green", () ->  new GlassBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS).noOcclusion().isValidSpawn(ReachBlocks::never).isRedstoneConductor(ReachBlocks::never).isSuffocating(ReachBlocks::never).isViewBlocking(ReachBlocks::never)));
@@ -110,8 +114,28 @@ public class ReachBlocks {
     public static final RegistryObject<Block> SNAG_FENCE = register("snag_fence", () -> new FenceBlock(BlockBehaviour.Properties.of(Material.WOOD, SNAG_PLANKS.get().defaultMaterialColor()).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> SNAG_DOOR = register("snag_door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.WOOD, SNAG_PLANKS.get().defaultMaterialColor()).strength(3.0F).sound(SoundType.WOOD).noOcclusion(), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
 
+    public static final RegistryObject<Block> SOUL_MOSS_CARPET = register("soul_moss_carpet", () -> new CarpetBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_GREEN).strength(0.1F).sound(SoundType.MOSS_CARPET)));
+    public static final RegistryObject<Block> SOUL_MOSS_BLOCK = register("soul_moss_block", () -> new MossBlock(BlockBehaviour.Properties.of(Material.MOSS, MaterialColor.COLOR_GREEN).strength(0.1F).sound(SoundType.MOSS)));
+    public static final RegistryObject<Block> BISMUTH = register("bismuth", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.PODZOL).strength(2.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> ANTIGRAVEL = register("antigravel", () -> new AntiGravelBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.STONE).strength(0.6F).sound(SoundType.GRAVEL)));
+
+    public static final RegistryObject<Block> SOUL_GRASS_PLANT_SMALL = register("soulgrass_plant_small", () ->  new SoulGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XYZ)));
+    public static final RegistryObject<Block> SOUL_GRASS_PLANT = register("soulgrass_plant", () ->  new DoubleSoulPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
+
+    public static final RegistryObject<Block> GHASTLY_PUMPKIN = register("ghastly_pumpkin", () -> new GhastlyPumpkinBlock(BlockBehaviour.Properties.of(Material.VEGETABLE, MaterialColor.COLOR_ORANGE).strength(1.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> CARVED_GHASTLY_PUMPKIN = register("carved_ghastly_pumpkin", () ->  new CarvedPumpkinBlock(BlockBehaviour.Properties.of(Material.VEGETABLE, MaterialColor.COLOR_ORANGE).strength(1.0F).sound(SoundType.WOOD).isValidSpawn(ReachBlocks::always)));
+    public static final RegistryObject<Block> JACK_O_LANTERN = register("jack_o_lantern", () ->  new CarvedPumpkinBlock(BlockBehaviour.Properties.of(Material.VEGETABLE, MaterialColor.COLOR_ORANGE).strength(1.0F).sound(SoundType.WOOD).lightLevel((p_50870_) -> {
+        return 7;
+    }).isValidSpawn(ReachBlocks::always)));
+    public static final RegistryObject<Block> GHASTLY_ATTACHED_PUMPKIN_STEM = register("attached_pumpkin_stem", () ->  new AttachedStemBlock((StemGrownBlock)GHASTLY_PUMPKIN.get(), ReachItems.GHASTLY_PUMPKIN_SEEDS::get, BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> GHASTLY_PUMPKIN_STEM = register("ghastly_pumpkin_stem", () ->  new StemBlock((StemGrownBlock)GHASTLY_PUMPKIN.get(), ReachItems.GHASTLY_PUMPKIN_SEEDS::get, BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.HARD_CROP)));
 
     public static final RegistryObject<Block> SOULCHEST = register("soulchest", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+
+    public static Supplier<? extends FlowingFluid> SOUL_LAVA_SUPPLIER = Suppliers.memoize(() -> (FlowingFluid) ReachFluids.SOUL_LAVA.get());
+    public static final RegistryObject<Block> SOUL_LAVA = register("soul_lava", () -> new SoulLavaBlock(SOUL_LAVA_SUPPLIER, BlockBehaviour.Properties.of(Material.LAVA).noCollission().randomTicks().noLootTable().strength(100.0F).lightLevel((p_220867_) -> {
+        return 15;
+    }).noLootTable()));
 
     private static Boolean always(BlockState p_50810_, BlockGetter p_50811_, BlockPos p_50812_, EntityType<?> p_50813_) {
         return (boolean)true;
@@ -124,6 +148,8 @@ public class ReachBlocks {
     private static Boolean never(BlockState p_50779_, BlockGetter p_50780_, BlockPos p_50781_, EntityType<?> p_50782_) {
         return (boolean)false;
     }
+
+
 
     private static RotatedPillarBlock log(MaterialColor p_50789_, MaterialColor p_50790_) {
         return new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, (p_152624_) -> {
@@ -152,6 +178,14 @@ public class ReachBlocks {
         RenderType trans = RenderType.cutoutMipped();
         RenderType cutout = RenderType.cutout();
         RenderType translucent = RenderType.translucent();
+
+        ItemBlockRenderTypes.setRenderLayer(SNAG_DOOR.get(), cutout);
+        ItemBlockRenderTypes.setRenderLayer(SNAG_TRAPDOOR.get(), cutout);
+        ItemBlockRenderTypes.setRenderLayer(SOUL_GRASS_PLANT.get(), cutout);
+        ItemBlockRenderTypes.setRenderLayer(SOUL_GRASS_PLANT_SMALL.get(), cutout);
+
+        ItemBlockRenderTypes.setRenderLayer(GHASTLY_PUMPKIN_STEM.get(), cutout);
+        ItemBlockRenderTypes.setRenderLayer(GHASTLY_ATTACHED_PUMPKIN_STEM.get(), cutout);
 
         ItemBlockRenderTypes.setRenderLayer(SHARD_BLUE.get(), translucent);
         ItemBlockRenderTypes.setRenderLayer(SHARD_GREEN.get(), translucent);

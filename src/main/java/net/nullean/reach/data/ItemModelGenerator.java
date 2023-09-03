@@ -39,6 +39,14 @@ public class ItemModelGenerator extends ItemModelProvider
         this.toBlock(ReachBlocks.BLEMISH_ROOTS);
         this.toBlock(ReachBlocks.GOOP);
 
+        this.toBlock(ReachBlocks.SHARD_PLASMA);
+        this.toBlock(ReachBlocks.SHARD_BLUE);
+        this.toBlock(ReachBlocks.SHARD_GREEN);
+        this.toBlock(ReachBlocks.SHARD_RED);
+        this.toBlock(ReachBlocks.SHARD_CYAN);
+        this.toBlock(ReachBlocks.SHARD_MAGENTA);
+        this.toBlock(ReachBlocks.SHARD_WHITE);
+
         this.toBlock(ReachBlocks.REACH_BRICKS);
         this.toBlock(ReachBlocks.REACH_BRICK_STAIRS);
         this.toBlock(ReachBlocks.REACH_BRICK_SLAB);
@@ -66,6 +74,20 @@ public class ItemModelGenerator extends ItemModelProvider
         this.toBlock(ReachBlocks.SNAG_WOOD);
         this.toBlock(ReachBlocks.STRIPPED_SNAG_LOG);
         this.toBlock(ReachBlocks.STRIPPED_SNAG_WOOD);
+
+        this.toBlock(ReachBlocks.SOUL_MOSS_CARPET);
+        this.toBlock(ReachBlocks.SOUL_MOSS_BLOCK);
+        this.toBlock(ReachBlocks.BISMUTH);
+        this.toBlock(ReachBlocks.ANTIGRAVEL);
+
+
+        this.toBlock(ReachBlocks.SOUL_GRASS_PLANT);
+        this.toBlock(ReachBlocks.SOUL_GRASS_PLANT_SMALL);
+        this.toBlock(ReachBlocks.GHASTLY_PUMPKIN);
+        this.toBlock(ReachBlocks.JACK_O_LANTERN);
+        this.toBlock(ReachBlocks.SOUL_LAVA);
+        this.toBlock(ReachBlocks.GHASTLY_ATTACHED_PUMPKIN_STEM);
+        this.toBlock(ReachBlocks.GHASTLY_PUMPKIN_STEM);
     }
 
     public ItemModelBuilder torchItem(Block item) {
