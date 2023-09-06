@@ -10,6 +10,8 @@
     "minecraft:mud",
     "minecraft:muddy_mangrove_roots",
     "minecraft:soul_soil",
-    "reach:soulgrass"
+    "reach:soulgrass",
+    "reach:calmstone",
+    "reach:calmgrass_block"
   ]
 }

@@ -13,9 +13,10 @@ public class ReachSounds
 
     public static final RegistryObject<SoundEvent> REACH_EXAMPLE_BGM = null;
     public static final RegistryObject<SoundEvent> MUSIC_BLEMISH = registerSoundEvent("music.theashfalls");
-    public static final RegistryObject<SoundEvent> MUSIC_PILLARS = registerSoundEvent("music.gelida");
+    public static final RegistryObject<SoundEvent> MUSIC_PILLARS = registerSoundEvent("music.glimmer");
     public static final RegistryObject<SoundEvent> MUSIC_SOUL_PLAINS = registerSoundEvent("music.coda");
     public static final RegistryObject<SoundEvent> MUSIC_CALM = registerSoundEvent("music.rodhim");
+    public static final RegistryObject<SoundEvent> MUSIC_BARRENS = registerSoundEvent("music.gelida");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String path) {
         return SOUND_EVENTS.register(path, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Reach.MOD_ID, path)));

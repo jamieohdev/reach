@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "reach:block/calm_pillar_top",
+    "side": "reach:block/calm_pillar"
+  }
+}

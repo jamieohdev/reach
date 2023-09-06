@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "reach:item/ghastly_pumpkin_seeds"
-  }
-}

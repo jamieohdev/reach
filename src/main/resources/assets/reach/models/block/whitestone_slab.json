@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "reach:block/whitestone_top",
+    "side": "reach:block/whitestone",
+    "top": "reach:block/whitestone_top"
+  }
+}

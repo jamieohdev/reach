@@ -2,6 +2,8 @@
   "values": [
     "reach:shard_blue",
     "reach:shard_green",
-    "reach:shard_red"
+    "reach:shard_red",
+    "reach:cloud_white",
+    "reach:cloud_purple"
   ]
 }

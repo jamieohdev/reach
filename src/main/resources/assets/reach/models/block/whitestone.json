@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "reach:block/whitestone_top",
+    "side": "reach:block/whitestone"
+  }
+}

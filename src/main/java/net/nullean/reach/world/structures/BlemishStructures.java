@@ -25,7 +25,7 @@ import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.material.Material;
 import net.nullean.reach.Reach;
 import net.nullean.reach.registry.ReachBlocks;
-import net.nullean.reach.registry.ReachStructures;
+import net.nullean.reach.registry.ReachStructureTypes;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
@@ -167,6 +167,6 @@ public class BlemishStructures extends Structure {
 
     @Override
     public StructureType<?> type() {
-        return ReachStructures.BLEMISH_STRUCTURES.get(); // Helps the game know how to turn this structure back to json to save to chunks
+        return ReachStructureTypes.BLEMISH_STRUCTURES.get(); // Helps the game know how to turn this structure back to json to save to chunks
     }
 }

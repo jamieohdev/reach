@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "reach:block/calm_pillar_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "reach:block/calm_pillar"
+    },
+    "axis=z": {
+      "model": "reach:block/calm_pillar_horizontal",
+      "x": 90
+    }
+  }
+}

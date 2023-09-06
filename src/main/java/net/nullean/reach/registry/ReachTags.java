@@ -22,6 +22,7 @@ public class ReachTags
         public static final TagKey<Biome> HAS_OCEAN_RUIN_COLD = create("has_structure/ocean_ruin_cold");
         public static final TagKey<Biome> HAS_OCEAN_RUIN_WARM = create("has_structure/ocean_ruin_warm");
         public static final TagKey<Biome> HAS_SHIPWRECK = create("has_structure/shipwreck");
+        public static final TagKey<Biome> HAS_LARGE_CLOUD= create("has_structure/large_cloud");
 
         private static TagKey<Biome> create(String name) {
             return TagKey.create(Registries.BIOME, new ResourceLocation(name));

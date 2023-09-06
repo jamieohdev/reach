@@ -2,6 +2,7 @@ package net.nullean.reach.registry;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -34,6 +35,8 @@ public class ReachItems {
     public static final RegistryObject<Item>  SNAG_SIGN = ITEMS.register("snag_sign_item", () -> new SnagSignItem((new Item.Properties()).stacksTo(16), ReachBlocks.SNAG_SIGN.get(), ReachBlocks.SNAG_WALL_SIGN.get()));
 
     public static final RegistryObject<Item> GHASTLY_PUMPKIN_SEEDS = ITEMS.register("ghastly_pumpkin_seeds", () -> new ItemNameBlockItem(ReachBlocks.GHASTLY_PUMPKIN_STEM.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CLOUD_BUCKET = ITEMS.register("cloud_bucket", () -> new SolidBucketItem(ReachBlocks.CLOUD_WHITE.get(), SoundEvents.BUCKET_EMPTY_POWDER_SNOW, (new Item.Properties()).stacksTo(1)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
@@ -44,7 +47,7 @@ public class ReachItems {
                 , (builder) -> {
                     REACHITEM = builder.icon(() -> new ItemStack(ReachItems.MOOBOO_SPAWNEGG.get())).title(Component.translatable("itemGroup." + Reach.MOD_ID + ".item" + ".main_tab")).displayItems((features, output, hasPermissions) ->
                             output.acceptAll(Stream.of(
-                                            MOOBOO_SPAWNEGG, SNAG_SIGN, GHASTLY_PUMPKIN_SEEDS)
+                                            MOOBOO_SPAWNEGG, SNAG_SIGN, GHASTLY_PUMPKIN_SEEDS, CLOUD_BUCKET)
                                     .map(item -> item.get().getDefaultInstance())
                                     .toList())).build();
                 });
@@ -108,7 +111,27 @@ public class ReachItems {
                                             ReachBlocks.SOUL_GRASS_PLANT_SMALL,
                                             ReachBlocks.SOUL_GRASS_PLANT,
                                             ReachBlocks.GHASTLY_PUMPKIN,
-                                            ReachBlocks.JACK_O_LANTERN)
+                                            ReachBlocks.CARVED_GHASTLY_PUMPKIN,
+                                            ReachBlocks.JACK_O_LANTERN,
+
+                                            ReachBlocks.CALMGRASS_BLOCK,
+                                            ReachBlocks.CALMGRASS_PLANT,
+                                            ReachBlocks.CALM_LANTERN,
+                                            ReachBlocks.CALM_PILLAR,
+                                            ReachBlocks.CALM_TORCH,
+                                            ReachBlocks.CALM_VINE,
+                                            ReachBlocks.CALMSTONE,
+                                            ReachBlocks.CLOUD_PURPLE,
+                                            ReachBlocks.CLOUD_WHITE,
+                                            ReachBlocks.WHITESTONE,
+                                            ReachBlocks.WHITESTONE_SLAB,
+                                            ReachBlocks.WHITESTONE_STAIRS,
+                                            ReachBlocks.WHITESTONE_WALL,
+                                            ReachBlocks.GILDED_WHITESTONE,
+                                            ReachBlocks.POLISHED_WHITESTONE,
+                                            ReachBlocks.CRACKED_POLISHED_WHITESTONE_BRICKS,
+                                            ReachBlocks.CHISELED_POLISHED_WHITESTONE,
+                                            ReachBlocks.POLISHED_WHITESTONE_BRICKS)
                                     .map(block -> block.get().asItem().getDefaultInstance())
                                     .toList())).build();
                 });

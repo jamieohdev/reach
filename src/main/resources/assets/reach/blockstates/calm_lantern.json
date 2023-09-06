@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "reach:block/calm_lantern"
+    },
+    "hanging=true": {
+      "model": "reach:block/calm_lantern_hanging"
+    }
+  }
+}

@@ -1,35 +1,45 @@
 package net.nullean.reach.registry;
 
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Registry;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.random.WeightedRandomList;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.world.level.levelgen.structure.StructureSpawnOverride;
+import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
 import net.nullean.reach.Reach;
-import net.nullean.reach.world.structures.BlemishStructures;
+import net.nullean.reach.block.ReachBlockStateProperties;
+import net.nullean.reach.world.structures.CloudStructure;
 
-public class ReachStructures {
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-    /**
-     * We are using the Deferred Registry system to register our structure as this is the preferred way on Forge.
-     * This will handle registering the base structure for us at the correct time so we don't have to handle it ourselves.
-     */
-    public static final DeferredRegister<StructureType<?>> DEFERRED_REGISTRY_STRUCTURE = DeferredRegister.create(Registries.STRUCTURE_TYPE, Reach.MOD_ID);
 
-    /**
-     * Registers the base structure itself and sets what its path is. In this case,
-     * this base structure will have the resourcelocation of structure_tutorial:sky_structures.
-     */
-    public static final RegistryObject<StructureType<BlemishStructures>> BLEMISH_STRUCTURES = DEFERRED_REGISTRY_STRUCTURE.register("blemish_ruin", () -> explicitStructureTypeTyping(BlemishStructures.CODEC));
+public class ReachStructures
+{
+    public static final ResourceKey<Structure> LARGE_CLOUD = createKey("large_cloud");
+    private static ResourceKey<Structure> createKey(String name) {
+        return ResourceKey.create(Registries.STRUCTURE, new ResourceLocation(Reach.MOD_ID, name));
+    }
 
-    /**
-     * Originally, I had a double lambda ()->()-> for the RegistryObject line above, but it turns out that
-     * some IDEs cannot resolve the typing correctly. This method explicitly states what the return type
-     * is so that the IDE can put it into the DeferredRegistry properly.
-     */
-    private static <T extends Structure> StructureType<T> explicitStructureTypeTyping(Codec<T> structureCodec) {
-        return () -> structureCodec;
+    public static void bootstrap(BootstapContext<Structure> context) {
+        Map<MobCategory, StructureSpawnOverride> mobSpawnsBox = Arrays.stream(MobCategory.values())
+                .collect(Collectors.toMap((category) -> category, (category) -> new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.STRUCTURE, WeightedRandomList.create())));
+
+        Map<MobCategory, StructureSpawnOverride> mobSpawnsPiece = Arrays.stream(MobCategory.values())
+                .collect(Collectors.toMap((category) -> category, (category) -> new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE, WeightedRandomList.create())));
+
+        HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
+        context.register(LARGE_CLOUD, new CloudStructure(
+                ReachStructureBuilders.structure(biomes.getOrThrow(ReachTags.Biomes.HAS_LARGE_CLOUD), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.NONE),
+                BlockStateProvider.simple(ReachBlocks.CLOUD_WHITE.get().defaultBlockState().setValue(ReachBlockStateProperties.DOUBLE_DROPS, true)),
+                3, 32));
     }
 }

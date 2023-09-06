@@ -1,0 +1,78 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "reach:block/calmstone"
+      },
+      {
+        "model": "reach:block/calmstone",
+        "x": 90
+      },
+      {
+        "model": "reach:block/calmstone",
+        "x": 180
+      },
+      {
+        "model": "reach:block/calmstone",
+        "x": 270
+      },
+      {
+        "model": "reach:block/calmstone",
+        "y": 90
+      },
+      {
+        "model": "reach:block/calmstone",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "reach:block/calmstone",
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "reach:block/calmstone",
+        "x": 270,
+        "y": 90
+      },
+      {
+        "model": "reach:block/calmstone",
+        "y": 180
+      },
+      {
+        "model": "reach:block/calmstone",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "reach:block/calmstone",
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "reach:block/calmstone",
+        "x": 270,
+        "y": 180
+      },
+      {
+        "model": "reach:block/calmstone",
+        "y": 270
+      },
+      {
+        "model": "reach:block/calmstone",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "reach:block/calmstone",
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "reach:block/calmstone",
+        "x": 270,
+        "y": 270
+      }
+    ]
+  }
+}

@@ -116,6 +116,14 @@
       }
     ]
   },
+  "music.glimmer": {
+    "sounds": [
+      {
+        "name": "reach:music/glimmer",
+        "stream": true
+      }
+    ]
+  },
   "music.gelida": {
     "category": "music",
     "sounds":[

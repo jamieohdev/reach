@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "reach:block/cracked_polished_whitestone_bricks"
+  }
+}

@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
@@ -42,6 +43,7 @@ import java.util.function.Supplier;
 
 public class ReachBlocks {
     Blocks block;
+    PowderSnowBlock ref;
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, Reach.MOD_ID);
     // General Reach Blocks
@@ -120,7 +122,7 @@ public class ReachBlocks {
     public static final RegistryObject<Block> ANTIGRAVEL = register("antigravel", () -> new AntiGravelBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.STONE).strength(0.6F).sound(SoundType.GRAVEL)));
 
     public static final RegistryObject<Block> SOUL_GRASS_PLANT_SMALL = register("soulgrass_plant_small", () ->  new SoulGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XYZ)));
-    public static final RegistryObject<Block> SOUL_GRASS_PLANT = register("soulgrass_plant", () ->  new DoubleSoulPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
+    public static final RegistryObject<Block> SOUL_GRASS_PLANT = register("soulgrass_plant", () ->  new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
 
     public static final RegistryObject<Block> GHASTLY_PUMPKIN = register("ghastly_pumpkin", () -> new GhastlyPumpkinBlock(BlockBehaviour.Properties.of(Material.VEGETABLE, MaterialColor.COLOR_ORANGE).strength(1.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> CARVED_GHASTLY_PUMPKIN = register("carved_ghastly_pumpkin", () ->  new CarvedPumpkinBlock(BlockBehaviour.Properties.of(Material.VEGETABLE, MaterialColor.COLOR_ORANGE).strength(1.0F).sound(SoundType.WOOD).isValidSpawn(ReachBlocks::always)));
@@ -136,6 +138,41 @@ public class ReachBlocks {
     public static final RegistryObject<Block> SOUL_LAVA = register("soul_lava", () -> new SoulLavaBlock(SOUL_LAVA_SUPPLIER, BlockBehaviour.Properties.of(Material.LAVA).noCollission().randomTicks().noLootTable().strength(100.0F).lightLevel((p_220867_) -> {
         return 15;
     }).noLootTable()));
+
+    public static final RegistryObject<Block> CLOUD_WHITE = register("cloud_white", () -> new CloudBlock(BlockBehaviour.Properties.of(Material.SNOW).noOcclusion().isValidSpawn(ReachBlocks::never).isRedstoneConductor(ReachBlocks::never).isSuffocating(ReachBlocks::never).isViewBlocking(ReachBlocks::never)));
+    public static final RegistryObject<Block> CLOUD_PURPLE = register("cloud_purple", () -> new Block(BlockBehaviour.Properties.of(Material.SNOW).noOcclusion().isValidSpawn(ReachBlocks::never).isRedstoneConductor(ReachBlocks::never).isSuffocating(ReachBlocks::never).isViewBlocking(ReachBlocks::never)));
+
+    public static final RegistryObject<Block> CALMSTONE = register("calmstone", () -> new Block(BlockBehaviour.Properties.of(Material.SNOW).requiresCorrectToolForDrops().strength(0.2F).sound(SoundType.SNOW)));
+    public static final RegistryObject<Block> CALMGRASS_BLOCK = register("calmgrass_block", () -> new Block(BlockBehaviour.Properties.of(Material.SNOW).requiresCorrectToolForDrops().strength(0.2F).sound(SoundType.SNOW)));
+    public static final RegistryObject<Block> CALMGRASS_PLANT = register("calmgrass_plant", () -> new SoulGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XYZ)));
+    public static final RegistryObject<Block> CALM_VINE = register("calm_vine", () -> new VineBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().randomTicks().strength(0.2F).sound(SoundType.VINE)));
+    public static final RegistryObject<Block> CALM_PILLAR = register("calm_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.QUARTZ).requiresCorrectToolForDrops().strength(0.8F)));
+    public static final RegistryObject<Block> WHITESTONE = register("whitestone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_WHITE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block>  WHITESTONE_STAIRS = register("whitestone_stairs", () -> new StairBlock(WHITESTONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(WHITESTONE.get())));
+    public static final RegistryObject<Block>  WHITESTONE_WALL = register("whitestone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(WHITESTONE.get())));
+    public static final RegistryObject<Block>  WHITESTONE_SLAB = register("whitestone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(WHITESTONE.get()).strength(2.0F, 6.0F)));
+    public static final RegistryObject<Block>  POLISHED_WHITESTONE = register("polished_whitestone", () -> new Block(BlockBehaviour.Properties.copy(WHITESTONE.get()).strength(2.0F, 6.0F)));
+    public static final RegistryObject<Block>  POLISHED_WHITESTONE_BRICKS = register("polished_whitestone_bricks", () -> new Block(BlockBehaviour.Properties.copy(POLISHED_WHITESTONE.get()).strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block>  CRACKED_POLISHED_WHITESTONE_BRICKS = register("cracked_polished_whitestone_bricks", () -> new Block(BlockBehaviour.Properties.copy(POLISHED_WHITESTONE_BRICKS.get())));
+    public static final RegistryObject<Block>  CHISELED_POLISHED_WHITESTONE = register("chiseled_polished_whitestone", () -> new Block(BlockBehaviour.Properties.copy(POLISHED_WHITESTONE.get()).strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block>  POLISHED_WHITESTONE_BRICK_SLAB = register("polished_whitestone_brick_slab",() -> new SlabBlock(BlockBehaviour.Properties.copy(POLISHED_WHITESTONE_BRICKS.get()).strength(2.0F, 6.0F)));
+    public static final RegistryObject<Block>  POLISHED_WHITESTONE_BRICK_STAIRS = register("polished_whitestone_brick_stairs", () -> new StairBlock(POLISHED_WHITESTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(POLISHED_WHITESTONE_BRICKS.get())));
+    public static final RegistryObject<Block>  POLISHED_WHITESTONE_BRICK_WALL = register("polished_whitestone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(POLISHED_WHITESTONE_BRICKS.get())));
+    public static final RegistryObject<Block>  GILDED_WHITESTONE = register("gilded_whitestone", () -> new Block(BlockBehaviour.Properties.copy(WHITESTONE.get()).sound(SoundType.GILDED_BLACKSTONE)));
+    public static final RegistryObject<Block>  POLISHED_WHITESTONE_STAIRS = register("polished_whitestone_stairs", () -> new StairBlock(POLISHED_WHITESTONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(POLISHED_WHITESTONE.get())));
+    public static final RegistryObject<Block>  POLISHED_WHITESTONE_SLAB = register("polished_whitestone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(POLISHED_WHITESTONE.get())));
+    public static final RegistryObject<Block>  POLISHED_WHITESTONE_PRESSURE_PLATE = register("polished_whitestone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().noCollission().strength(0.5F), SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF, SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON));
+    public static final RegistryObject<Block>  POLISHED_WHITESTONE_BUTTON = register("polished_whitestone_button", () -> stoneButton());
+    public static final RegistryObject<Block>  POLISHED_WHITESTONE_WALL = register("polished_whitestone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(POLISHED_WHITESTONE.get())));
+
+
+    public static final RegistryObject<Block> CALM_LANTERN = register("calm_lantern", () -> new LanternBlock(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((p_152677_) -> {
+        return 15;
+    }).noOcclusion()));
+    public static final RegistryObject<Block> CALM_TORCH = register("calm_torch", () -> new TorchBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().instabreak().lightLevel((p_50755_) -> {
+        return 14;
+    }).sound(SoundType.WOOD), ParticleTypes.FLAME));
+
 
     private static Boolean always(BlockState p_50810_, BlockGetter p_50811_, BlockPos p_50812_, EntityType<?> p_50813_) {
         return (boolean)true;
@@ -168,7 +205,6 @@ public class ReachBlocks {
     private static ButtonBlock woodenButton(SoundType p_249282_, SoundEvent p_251988_, SoundEvent p_251887_) {
         return new ButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(p_249282_), 30, true, p_251988_, p_251887_);
     }
-
     private static ButtonBlock stoneButton() {
         return new ButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.STONE), 20, false, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON);
     }
@@ -183,9 +219,15 @@ public class ReachBlocks {
         ItemBlockRenderTypes.setRenderLayer(SNAG_TRAPDOOR.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(SOUL_GRASS_PLANT.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(SOUL_GRASS_PLANT_SMALL.get(), cutout);
+        ItemBlockRenderTypes.setRenderLayer(CALM_LANTERN.get(), cutout);
+        ItemBlockRenderTypes.setRenderLayer(CALMGRASS_PLANT.get(), cutout);
+        ItemBlockRenderTypes.setRenderLayer(CALM_VINE.get(), cutout);
 
         ItemBlockRenderTypes.setRenderLayer(GHASTLY_PUMPKIN_STEM.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(GHASTLY_ATTACHED_PUMPKIN_STEM.get(), cutout);
+        
+        ItemBlockRenderTypes.setRenderLayer(CLOUD_WHITE.get(), translucent);
+        ItemBlockRenderTypes.setRenderLayer(CLOUD_PURPLE.get(), translucent);
 
         ItemBlockRenderTypes.setRenderLayer(SHARD_BLUE.get(), translucent);
         ItemBlockRenderTypes.setRenderLayer(SHARD_GREEN.get(), translucent);

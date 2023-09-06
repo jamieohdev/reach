@@ -27,6 +27,7 @@ public class ReachBiomes {
         return new Climate.ParameterList<>(ImmutableList.of(
                 Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), p_255954_.getOrThrow(ReachBiomes.SOUL_PLAINS)),
                 Pair.of(Climate.parameters(1.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), p_255954_.getOrThrow(ReachBiomes.PILLARS)),
+                Pair.of(Climate.parameters(0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.275F), p_255954_.getOrThrow(ReachBiomes.CALM)),
                 Pair.of(Climate.parameters(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), p_255954_.getOrThrow(Biomes.SOUL_SAND_VALLEY)),
                 Pair.of(Climate.parameters(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), p_255954_.getOrThrow(Biomes.CRIMSON_FOREST)),
                 Pair.of(Climate.parameters(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), p_255954_.getOrThrow(Biomes.WARPED_FOREST)),

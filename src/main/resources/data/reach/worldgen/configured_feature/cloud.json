@@ -1,0 +1,6 @@
+{
+  "type": "reach:cloud",
+  "config": {
+    "bounds": 8
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "reach:block/whitestone_slab"
+    },
+    "type=double": {
+      "model": "reach:block/whitestone"
+    },
+    "type=top": {
+      "model": "reach:block/whitestone_slab_top"
+    }
+  }
+}

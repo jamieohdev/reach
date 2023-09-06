@@ -1,0 +1,7 @@
+
+{
+  "parent": "minecraftt:item/generated",
+  "textures": {
+    "layer0": "reach:block/calm_vine"
+  }
+}

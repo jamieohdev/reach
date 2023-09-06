@@ -3,6 +3,7 @@ package net.nullean.reach;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.nullean.reach.block.ReachWoodTypes;
 import net.nullean.reach.registry.*;
@@ -29,9 +30,20 @@ import org.slf4j.Logger;
 import java.util.Locale;
 
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod(Reach.MOD_ID)
-public class Reach {
+public class Reach
+{
+    /**
+     * TODO LIST:
+     *
+     * PORT TO 1.19.4
+     * PORT TO 1.20.1 BEFORE 1.21 COMES OUT?
+     *
+     * BUGS:
+     * FLUIDS DO NOT WORK
+     * CEILING CRYSTALS TANK PERFORMANCE
+     *
+     */
     public static final String MOD_ID = "reach";
     public static final Logger LOGGER = LogUtils.getLogger();
 
@@ -66,7 +78,9 @@ public class Reach {
         ReachFluidsReg.setup();
         ReachTags.setup();
 
-        ReachStructures.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
+        ReachStructureTypes.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
+        ReachStructurePieceTypes.STRUCTURE_PIECE_TYPES.register(modEventBus);
+
         // ReachPieces.STRUCTURE_PIECE_TYPES.register(modEventBus);
     }
 

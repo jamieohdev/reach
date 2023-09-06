@@ -11,7 +11,7 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-import net.nullean.reach.registry.ReachStructures;
+import net.nullean.reach.registry.ReachStructureTypes;
 
 import java.util.Optional;
 
@@ -50,6 +50,6 @@ public class BlemishRuinStructure extends Structure {
 
     @Override
     public StructureType<?> type() {
-        return ReachStructures.BLEMISH_STRUCTURES.get();
+        return ReachStructureTypes.BLEMISH_STRUCTURES.get();
     }
 }

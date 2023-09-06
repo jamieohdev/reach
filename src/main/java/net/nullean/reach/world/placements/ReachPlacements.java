@@ -47,6 +47,9 @@ public class ReachPlacements
     public static final ResourceKey<PlacedFeature> PATCH_PUMPKIN = registerKey("patch_pumpkin");
 
 
+    public static final ResourceKey<PlacedFeature> CALM_VINES = registerKey("calm_vines");
+    public static final ResourceKey<PlacedFeature> CLOUD = registerKey("cloud");
+
     public static final ResourceKey<PlacedFeature> XP_FLOOR = registerKey("xp_floor");
     //, GConfiguredFeatures.ALLURITE_CRYSTAL_FLOOR.getHolder().get(), CountPlacement.of(UniformInt.of(180, 200)), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, BiomeFilter.biome());
     public static final ResourceKey<PlacedFeature> XP_CEILING = registerKey("xp_ceiling");//, GConfiguredFeatures.LUMIERE_CRYSTAL_FLOOR.getHolder().get(), CountPlacement.of(UniformInt.of(180, 200)), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, BiomeFilter.biome());
@@ -77,7 +80,9 @@ public class ReachPlacements
         PlacementUtils.register(context, BLEMISH_TOP_LAYER, configuredFeature.getOrThrow(ModConfiguredFeatures.BLEMISH_TOP_LAYER), BiomeFilter.biome());
         PlacementUtils.register(context, PATCH_RAFFLESIA, configuredFeature.getOrThrow(ModConfiguredFeatures.PATCH_RAFFLESIA), NoiseThresholdCountPlacement.of(-0.8D, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
         PlacementUtils.register(context, PATCH_BLEMISH_ROOTS, configuredFeature.getOrThrow(ModConfiguredFeatures.PATCH_BLEMISH_ROOTS), NoiseThresholdCountPlacement.of(-0.8D, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
-        PlacementUtils.register(context, BLEMISH_TOP_LAYER, configuredFeature.getOrThrow(ModConfiguredFeatures.BLEMISH_TOP_LAYER), BiomeFilter.biome());
+        PlacementUtils.register(context, CALM_VINES, configuredFeature.getOrThrow(ModConfiguredFeatures.CALM_VINES), BiomeFilter.biome());
+
+        PlacementUtils.register(context, CLOUD, configuredFeature.getOrThrow(ModConfiguredFeatures.CLOUD), BiomeFilter.biome());
 
         PlacementUtils.register(context, PATCH_PUMPKIN, configuredFeature.getOrThrow(ModConfiguredFeatures.PATCH_PUMPKIN), RarityFilter.onAverageOnceEvery(300), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome());
         PlacementUtils.register(context, PATCH_GRASS, configuredFeature.getOrThrow(ModConfiguredFeatures.PATCH_GRASS), worldSurfaceSquaredWithCount(125));

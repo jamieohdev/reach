@@ -19,6 +19,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.*;
 import net.minecraft.world.level.levelgen.feature.DripstoneClusterFeature;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
@@ -83,6 +84,9 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<? , ?>> XP_CEILING = registerKey("xp_ceiling");
 
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>>  CALM_VINES = registerKey("calm_vines");
+    public static final ResourceKey<ConfiguredFeature<?, ?>>  CLOUD = registerKey("cloud");
+
     public static final ResourceKey<ConfiguredFeature<? , ?>> PATCH_GRASS = registerKey("patch_grass");
     public static final ResourceKey<ConfiguredFeature<? , ?>> PATCH_TALL_GRASS = registerKey("patch_tall_grass");
     public static final ResourceKey<ConfiguredFeature<? , ?>> PATCH_PUMPKIN = registerKey("patch_pumpkins");
@@ -126,6 +130,10 @@ public class ModConfiguredFeatures {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         FeatureUtils.register(context, BLEMISH_TOP_LAYER, ReachFeatures.BLEMISH_TOP_LAYER.get(), new NoneFeatureConfiguration());
         FeatureUtils.register(context, BLEMISHSTONE_CLUSTER, ReachFeatures.BLEMISHSTONE_CLUSTER.get(), new BlemishstoneClusterConfiguration(12, UniformInt.of(3, 6), UniformInt.of(2, 8), 1, 3, UniformInt.of(2, 4), UniformFloat.of(0.3F, 0.7F), ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
+
+        WeightedStateProvider tst = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(ReachBlocks.CLOUD_WHITE.get().defaultBlockState(), 128));
+        FeatureUtils.register(context, CLOUD, ReachFeatures.CLOUD.get(), new CloudConfiguration(16));
+        FeatureUtils.register(context, CALM_VINES, ReachFeatures.CALM_VINES.get(), new NoneFeatureConfiguration());
 
         FeatureUtils.register(context, BLEMISH_VINES, ReachFeatures.BLEMISH_VINES.get(), new NoneFeatureConfiguration());
         FeatureUtils.register(context, GOOP_FEATURE, ReachFeatures.GOOP_FEATURE.get(), new NoneFeatureConfiguration());

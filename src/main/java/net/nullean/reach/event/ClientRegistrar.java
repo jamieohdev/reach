@@ -12,10 +12,7 @@ import net.nullean.reach.Reach;
 
 import net.nullean.reach.client.ReachModelLayers;
 import net.nullean.reach.client.ReachRenderInfo;
-import net.nullean.reach.client.model.BlemishModel;
-import net.nullean.reach.client.model.ModelSpreader;
-import net.nullean.reach.client.model.MooBooModel;
-import net.nullean.reach.client.model.WispModel;
+import net.nullean.reach.client.model.*;
 import net.nullean.reach.client.renderer.*;
 import net.nullean.reach.registry.ReachEntities;
 import net.nullean.reach.util.KeyBinding;
@@ -34,6 +31,7 @@ public class ClientRegistrar
     public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ReachEntities.MOOBOO.get(), MooBooRenderer::new);
         event.registerEntityRenderer(ReachEntities.BLEMISH.get(), BlemishRenderer::new);
+        event.registerEntityRenderer(ReachEntities.PARAGON.get(), ParagonRenderer::new);
         event.registerEntityRenderer(ReachEntities.SPREADER.get(), SpreaderRenderer::new);
         event.registerEntityRenderer(ReachEntities.SPREADER_BLAST.get(), SpreaderBlastRenderer::new);
         event.registerEntityRenderer(ReachEntities.WISP.get(), WispRenderer::new);
@@ -45,6 +43,7 @@ public class ClientRegistrar
         LayerDefinition layerdefinition = LayerDefinition.create(HumanoidModel.createMesh(CubeDeformation.NONE, 0.0F), 64, 64);
         event.registerLayerDefinition(ReachModelLayers.MOOBOO, MooBooModel::createBodyLayer);
         event.registerLayerDefinition(ReachModelLayers.BLEMISH, BlemishModel::createBodyLayer);
+        event.registerLayerDefinition(ReachModelLayers.PARAGON, ParagonModel::createBodyLayer);
         event.registerLayerDefinition(ReachModelLayers.SPREADER, ModelSpreader::createBodyLayer);
         event.registerLayerDefinition(ReachModelLayers.WISP, WispModel::createBodyLayer);
     }

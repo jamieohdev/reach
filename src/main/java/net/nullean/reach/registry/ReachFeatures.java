@@ -39,7 +39,8 @@ public class ReachFeatures
     public static final RegistryObject<Feature<ColumnFeatureConfiguration>> SHARD_MAGENTA_SMALL = FEATURES.register("shard_small_magenta", () -> new ShardSmallFeature(ColumnFeatureConfiguration.CODEC, ReachBlocks.SHARD_MAGENTA.get()));
     public static final RegistryObject<Feature<ColumnFeatureConfiguration>> SHARD_WHITE_SMALL = FEATURES.register("shard_small_white", () -> new ShardSmallFeature(ColumnFeatureConfiguration.CODEC, ReachBlocks.SHARD_WHITE.get()));
 
-
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> CALM_VINES = FEATURES.register("calm_vines", () -> new CalmVinesFeature(NoneFeatureConfiguration.CODEC));
+    public static RegistryObject<Feature<CloudConfiguration>> CLOUD = FEATURES.register("cloud", () -> new CloudFeature(CloudConfiguration.CODEC));
 
     private static RandomPatchConfiguration grassPatch(BlockStateProvider p_195203_, int p_195204_) {
         return FeatureUtils.simpleRandomPatchConfiguration(p_195204_, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(p_195203_)));

@@ -78,20 +78,19 @@ public class ReachBiomeBuilders {
     public static Biome calmBiome(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
         BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         MobSpawnSettings.Builder builder1 = new MobSpawnSettings.Builder();
-        ReachBiomeDefaultFeatures.addFishSpawns(builder1);
 
         return fullDefinition(
                 Biome.Precipitation.NONE,
-                1.0F,
+                0.5F,
                 0.6F,
                 new BiomeSpecialEffects.Builder()
-                        .fogColor(4630224)
-                        .skyColor(7907327)
-                        .waterColor(0x3f_76_e4)
-                        .waterFogColor(0x05_05_33)
+                        .fogColor(0xD8CE51)
+                        .skyColor(0xDFDCB8)
+                        .waterColor(0x811F1F)
+                        .waterFogColor(0x811F1F)
                         .grassColorOverride(7115607)
                         .foliageColorOverride(7115607)
-                        .grassColorModifier(BiomeSpecialEffects.GrassColorModifier.NONE)
+                        .grassColorModifier(BiomeSpecialEffects.GrassColorModifier.SWAMP)
                         .backgroundMusic(new Music(ReachSounds.MUSIC_CALM.getHolder().orElseThrow(), 12000, 24000, true))
                         .build(),
                 builder1.build(),

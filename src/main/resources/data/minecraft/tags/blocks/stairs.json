@@ -1,6 +1,7 @@
 {
   "values": [
     "reach:reach_brick_stairs",
-    "reach:reach_tile_stairs"
+    "reach:reach_tile_stairs",
+    "reach:whitestone_stairs"
   ]
 }
