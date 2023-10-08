@@ -62,8 +62,8 @@ public class Reach
 
         ModRecipes.register(modEventBus);
         ReachEntities.ENTITIES.register(modEventBus);
-        ReachFluidsReg.FLUID_REGISTER.register(modEventBus);
-        ReachFluidsReg.FORGE_FLUID_REGISTER.register(modEventBus);
+        //ReachFluidsReg.FLUID_REGISTER.register(modEventBus);
+        //ReachFluidsReg.FORGE_FLUID_REGISTER.register(modEventBus);
         ReachSounds.SOUND_EVENTS.register(modEventBus);
         ReachParticles.PARTICLES.register(modEventBus);
         ReachTileEntities.TILE.register(modEventBus);

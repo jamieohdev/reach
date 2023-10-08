@@ -36,6 +36,7 @@ public class ReachItems {
 
     public static final RegistryObject<Item> GHASTLY_PUMPKIN_SEEDS = ITEMS.register("ghastly_pumpkin_seeds", () -> new ItemNameBlockItem(ReachBlocks.GHASTLY_PUMPKIN_STEM.get(), new Item.Properties()));
     public static final RegistryObject<Item> CLOUD_BUCKET = ITEMS.register("cloud_bucket", () -> new SolidBucketItem(ReachBlocks.CLOUD_WHITE.get(), SoundEvents.BUCKET_EMPTY_POWDER_SNOW, (new Item.Properties()).stacksTo(1)));
+    public static final RegistryObject<Item> SOUL_LAVA_BUCKET = ITEMS.register("soul_lava_bucket", () -> new SolidBucketItem(ReachBlocks.SOUL_LAVA.get(), SoundEvents.BUCKET_EMPTY_LAVA, (new Item.Properties()).stacksTo(1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
@@ -47,7 +48,8 @@ public class ReachItems {
                 , (builder) -> {
                     REACHITEM = builder.icon(() -> new ItemStack(ReachItems.MOOBOO_SPAWNEGG.get())).title(Component.translatable("itemGroup." + Reach.MOD_ID + ".item" + ".main_tab")).displayItems((features, output, hasPermissions) ->
                             output.acceptAll(Stream.of(
-                                            MOOBOO_SPAWNEGG, SNAG_SIGN, GHASTLY_PUMPKIN_SEEDS, CLOUD_BUCKET)
+                                            MOOBOO_SPAWNEGG, SNAG_SIGN, GHASTLY_PUMPKIN_SEEDS, CLOUD_BUCKET,
+                                            SOUL_LAVA_BUCKET)
                                     .map(item -> item.get().getDefaultInstance())
                                     .toList())).build();
                 });

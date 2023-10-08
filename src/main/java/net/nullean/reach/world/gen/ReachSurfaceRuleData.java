@@ -1,13 +1,16 @@
 package net.nullean.reach.world.gen;
 
 import com.google.common.collect.ImmutableList;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.nullean.reach.registry.ReachBiomes;
+import net.nullean.reach.registry.ReachBlocks;
 
 public class ReachSurfaceRuleData {
     private static final SurfaceRules.RuleSource AIR = makeStateRule(Blocks.AIR);
@@ -15,6 +18,8 @@ public class ReachSurfaceRuleData {
     private static final SurfaceRules.RuleSource GRASS_BLOCK = makeStateRule(Blocks.GRASS_BLOCK.defaultBlockState().getBlock());
     private static final SurfaceRules.RuleSource DIRT = makeStateRule(Blocks.DIRT.defaultBlockState().getBlock());
     private static final SurfaceRules.RuleSource STONE = makeStateRule(Blocks.STONE.defaultBlockState().getBlock());
+    private static final SurfaceRules.RuleSource CALMSTONE = makeStateRule(ReachBlocks.CALMSTONE.get().defaultBlockState().getBlock());
+    private static final SurfaceRules.RuleSource WHITESTONE = makeStateRule(ReachBlocks.WHITESTONE.get().defaultBlockState().getBlock());
 
     private static final SurfaceRules.RuleSource POWDER_SNOW = makeStateRule(Blocks.SAND);
     private static final SurfaceRules.RuleSource SNOW_BLOCK = makeStateRule(Blocks.SANDSTONE);
@@ -35,6 +40,9 @@ public class ReachSurfaceRuleData {
 
 
         SurfaceRules.ConditionSource surfacerules$conditionsource8 = SurfaceRules.waterBlockCheck(0, 0);
+        SurfaceRules.RuleSource surfacerules$rulesource3 = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ReachBiomes.CALM),
+                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.CALCITE, -0.0125D, 0.0125D),
+                        WHITESTONE), CALMSTONE)));
 
         SurfaceRules.RuleSource surfacerules$rulesource5 = SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.POWDER_SNOW, 0.35D, 0.6D), SurfaceRules.ifTrue(surfacerules$conditionsource8, POWDER_SNOW));
 

@@ -25,6 +25,8 @@ public class ReachFeatures
 
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> GOOP_FEATURE = FEATURES.register("goop", () -> new GoopFeature(NoneFeatureConfiguration.CODEC));
 
+    public static final RegistryObject<Feature<TreeConfiguration>> SNAG_TREE = FEATURES.register("snag_tree", () -> new TreeFeature(TreeConfiguration.CODEC));
+
     public static final RegistryObject<Feature<ShardConfiguration1>> SHARD_BLUE_LARGE = FEATURES.register("shard_large_blue", () -> new ShardLargeFeature1(ShardConfiguration1.CODEC, ReachBlocks.SHARD_BLUE.get()));
     public static final RegistryObject<Feature<ShardConfiguration>> SHARD_GREEN_LARGE = FEATURES.register("shard_large_green", () -> new ShardLargeFeature(ShardConfiguration.CODEC, ReachBlocks.SHARD_GREEN.get()));
     public static final RegistryObject<Feature<ShardConfiguration2>> SHARD_RED_LARGE = FEATURES.register("shard_large_red", () -> new ShardLargeFeature2(ShardConfiguration2.CODEC, ReachBlocks.SHARD_RED.get()));

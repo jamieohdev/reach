@@ -2,10 +2,12 @@ package net.nullean.reach.world.feature;
 
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.data.worldgen.*;
 import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.placement.TreePlacements;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagBuilder;
 import net.minecraft.tags.TagKey;
@@ -18,11 +20,15 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.*;
 import net.minecraft.world.level.levelgen.feature.DripstoneClusterFeature;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.PineFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight;
 import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
@@ -61,6 +67,7 @@ import net.nullean.reach.world.placements.ReachPlacements;
 
 import java.util.List;
 import java.util.Map;
+import java.util.OptionalInt;
 
 public class ModConfiguredFeatures {
 
@@ -86,6 +93,9 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>>  CALM_VINES = registerKey("calm_vines");
     public static final ResourceKey<ConfiguredFeature<?, ?>>  CLOUD = registerKey("cloud");
+
+    public static final ResourceKey<ConfiguredFeature<? , ?>> SNAG = FeatureUtils.createKey("snag");
+    public static final ResourceKey<ConfiguredFeature<? , ?>> SNAG_TREE = registerKey("trees_snag_snag");
 
     public static final ResourceKey<ConfiguredFeature<? , ?>> PATCH_GRASS = registerKey("patch_grass");
     public static final ResourceKey<ConfiguredFeature<? , ?>> PATCH_TALL_GRASS = registerKey("patch_tall_grass");
@@ -125,9 +135,25 @@ public class ModConfiguredFeatures {
         context.register(BuiltinStructures.OCEAN_RUIN_WARM, new OceanRuinStructure(structure(holdergetter.getOrThrow(ReachTags.Biomes.HAS_OCEAN_RUIN_WARM), TerrainAdjustment.NONE), OceanRuinStructure.Type.WARM, 0.3F, 0.9F));
         // context.register(BuiltinStructures.RUINED_PORTAL_OCEAN, new RuinedPortalStructure(structure(holdergetter.getOrThrow(ReachTags.Biomes.HAS_RUINED_PORTAL_OCEAN), TerrainAdjustment.NONE), new RuinedPortalStructure.Setup(RuinedPortalPiece.VerticalPlacement.ON_OCEAN_FLOOR, 0.0F, 0.8F, false, false, true, false, 1.0F)));
     }
-    
+
+    private static TreeConfiguration.TreeConfigurationBuilder createFancyOak() {
+        return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ReachBlocks.SNAG_LOG.get()),
+                new FancyTrunkPlacer(3, 11, 0), BlockStateProvider.simple(Blocks.AIR),
+                new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
+                new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines();
+
+    }
+
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
-        HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
+        HolderGetter<ConfiguredFeature<?, ?>> configured = context.lookup(Registries.CONFIGURED_FEATURE);
+        HolderGetter<Block> block = context.lookup(Registries.BLOCK);
+        HolderGetter<PlacedFeature> placed = context.lookup(Registries.PLACED_FEATURE);
+
+
+        Holder<PlacedFeature> checked = placed.getOrThrow(ReachPlacements.SNAG_CHECKED);
+        FeatureUtils.register(context, SNAG_TREE, Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(checked, 0.33333334F)), checked));
+        FeatureUtils.register(context, SNAG, Feature.TREE, createFancyOak().build());
+
         FeatureUtils.register(context, BLEMISH_TOP_LAYER, ReachFeatures.BLEMISH_TOP_LAYER.get(), new NoneFeatureConfiguration());
         FeatureUtils.register(context, BLEMISHSTONE_CLUSTER, ReachFeatures.BLEMISHSTONE_CLUSTER.get(), new BlemishstoneClusterConfiguration(12, UniformInt.of(3, 6), UniformInt.of(2, 8), 1, 3, UniformInt.of(2, 4), UniformFloat.of(0.3F, 0.7F), ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
 
@@ -158,6 +184,7 @@ public class ModConfiguredFeatures {
 
         FeatureUtils.register(context, XP_FLOOR, ReachFeatures.XP_FLOOR.get(), new ExperimentConfig(Blocks.DIRT.defaultBlockState(), Blocks.GLOWSTONE.defaultBlockState(), Blocks.DIRT.defaultBlockState(), UniformInt.of(4, 7), CaveSurface.FLOOR, 0.25F));
         FeatureUtils.register(context, XP_CEILING, ReachFeatures.XP_CEILING.get(), new ExperimentConfig(Blocks.STONE.defaultBlockState(), Blocks.GLOWSTONE.defaultBlockState(), Blocks.OCHRE_FROGLIGHT.defaultBlockState(), UniformInt.of(4, 7), CaveSurface.CEILING, 0.25F));
+
 
         FeatureUtils.register(context, PATCH_TALL_GRASS, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ReachBlocks.SOUL_GRASS_PLANT.get()))));
         FeatureUtils.register(context, PATCH_GRASS, Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(ReachBlocks.SOUL_GRASS_PLANT_SMALL.get()), 32));

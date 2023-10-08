@@ -23,8 +23,8 @@
         {
           "biome": "reach:pillars",
           "parameters": {
-            "temperature": 1.5,
-            "humidity": 0,
+            "temperature": -11.5,
+            "humidity": -10,
             "continentalness": 0,
             "erosion": 0,
             "weirdness": 0,
@@ -35,8 +35,8 @@
         {
           "biome": "reach:calm",
           "parameters": {
-            "temperature": 0.5,
-            "humidity": 0,
+            "temperature": 10.5,
+            "humidity": 10,
             "continentalness": 0,
             "erosion": 0,
             "weirdness": 0,

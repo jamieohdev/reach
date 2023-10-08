@@ -14,6 +14,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
@@ -33,6 +34,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.nullean.reach.block.*;
+import net.nullean.reach.block.grower.SnagTreeGrower;
+import net.nullean.reach.fluid.ModFluids;
 import net.nullean.reach.world.material.fluids.ReachFluids;
 
 import javax.annotation.Nonnull;
@@ -43,6 +46,7 @@ import java.util.function.Supplier;
 
 public class ReachBlocks {
     Blocks block;
+    Villager v;
     PowderSnowBlock ref;
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, Reach.MOD_ID);
@@ -96,7 +100,7 @@ public class ReachBlocks {
     public static final RegistryObject<Block>  CHISELED_REACH_BRICKS = register("reach_chiseled_bricks", () ->  new Block(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> SNAG_PLANKS = register("snag_planks", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.PODZOL).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> SNAG_SAPLING = register("snag_sapling", () -> new SaplingBlock(new SpruceTreeGrower(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+    public static final RegistryObject<Block> SNAG_SAPLING = register("snag_sapling", () -> new ReachSaplingBlock(new SnagTreeGrower(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> SNAG_LOG = register("snag_log", () ->  log(MaterialColor.PODZOL, MaterialColor.COLOR_BROWN));
     public static final RegistryObject<Block> STRIPPED_SNAG_LOG = register("stripped_snag_log",() -> log(MaterialColor.PODZOL, MaterialColor.PODZOL));
     public static final RegistryObject<Block> SNAG_WOOD = register("snag_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.PODZOL).strength(2.0F).sound(SoundType.WOOD)));
@@ -135,7 +139,7 @@ public class ReachBlocks {
     public static final RegistryObject<Block> SOULCHEST = register("soulchest", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 
     public static Supplier<? extends FlowingFluid> SOUL_LAVA_SUPPLIER = Suppliers.memoize(() -> (FlowingFluid) ReachFluids.SOUL_LAVA.get());
-    public static final RegistryObject<Block> SOUL_LAVA = register("soul_lava", () -> new SoulLavaBlock(SOUL_LAVA_SUPPLIER, BlockBehaviour.Properties.of(Material.LAVA).noCollission().randomTicks().noLootTable().strength(100.0F).lightLevel((p_220867_) -> {
+    public static final RegistryObject<LiquidBlock> SOUL_LAVA = register("soul_lava", () -> new LiquidBlock(ModFluids.SOURCE_SOUL_LAVA, BlockBehaviour.Properties.of(Material.LAVA).noCollission().randomTicks().noLootTable().strength(100.0F).lightLevel((p_220867_) -> {
         return 15;
     }).noLootTable()));
 
@@ -164,7 +168,6 @@ public class ReachBlocks {
     public static final RegistryObject<Block>  POLISHED_WHITESTONE_PRESSURE_PLATE = register("polished_whitestone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().noCollission().strength(0.5F), SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF, SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON));
     public static final RegistryObject<Block>  POLISHED_WHITESTONE_BUTTON = register("polished_whitestone_button", () -> stoneButton());
     public static final RegistryObject<Block>  POLISHED_WHITESTONE_WALL = register("polished_whitestone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(POLISHED_WHITESTONE.get())));
-
 
     public static final RegistryObject<Block> CALM_LANTERN = register("calm_lantern", () -> new LanternBlock(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((p_152677_) -> {
         return 15;

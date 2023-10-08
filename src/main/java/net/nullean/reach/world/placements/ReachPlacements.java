@@ -5,6 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.NetherFeatures;
+import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -41,6 +42,9 @@ public class ReachPlacements
     public static final ResourceKey<PlacedFeature> SHARD_SMALL_CYAN = registerKey("shard_large_cyan");
     public static final ResourceKey<PlacedFeature> SHARD_SMALL_MAGENTA = registerKey("shard_small_magebnta");
     public static final ResourceKey<PlacedFeature> SHARD_SMALL_WHITE = registerKey("shard_small_white");
+
+    public static final ResourceKey<PlacedFeature> SNAG_CHECKED = registerKey("snag_checked");
+    public static final ResourceKey<PlacedFeature> SNAG_TREE = registerKey("trees_snag_snag");
 
     public static final ResourceKey<PlacedFeature> PATCH_GRASS = registerKey("patch_grass");
     public static final ResourceKey<PlacedFeature> PATCH_TALL_GRASS = registerKey("patch_tall_grass");
@@ -83,6 +87,10 @@ public class ReachPlacements
         PlacementUtils.register(context, CALM_VINES, configuredFeature.getOrThrow(ModConfiguredFeatures.CALM_VINES), BiomeFilter.biome());
 
         PlacementUtils.register(context, CLOUD, configuredFeature.getOrThrow(ModConfiguredFeatures.CLOUD), BiomeFilter.biome());
+
+        Holder<ConfiguredFeature<?, ?>> holder0 = configuredFeature.getOrThrow(TreeFeatures.PINE);
+        PlacementUtils.register(context, SNAG_CHECKED, holder0, PlacementUtils.filteredByBlockSurvival(ReachBlocks.SNAG_SAPLING.get()));
+        PlacementUtils.register(context, SNAG_TREE, configuredFeature.getOrThrow(ModConfiguredFeatures.SNAG_TREE), PlacementUtils.filteredByBlockSurvival(ReachBlocks.SNAG_SAPLING.get()));
 
         PlacementUtils.register(context, PATCH_PUMPKIN, configuredFeature.getOrThrow(ModConfiguredFeatures.PATCH_PUMPKIN), RarityFilter.onAverageOnceEvery(300), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome());
         PlacementUtils.register(context, PATCH_GRASS, configuredFeature.getOrThrow(ModConfiguredFeatures.PATCH_GRASS), worldSurfaceSquaredWithCount(125));
